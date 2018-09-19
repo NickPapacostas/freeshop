@@ -2,6 +2,7 @@ class CheckoutsController < ApplicationController
 	def new
 		@checkout = Checkout.new
 		@checkout.checkout_items.build
+		@items = Item.all
 	end
 
 	def create
@@ -20,6 +21,5 @@ class CheckoutsController < ApplicationController
 
 	def checkout_params
 		params.require(:checkout).permit(checkout_items_attributes: [:item_id, :count])
-
 	end
 end
