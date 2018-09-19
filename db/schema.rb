@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_193157) do
+ActiveRecord::Schema.define(version: 2018_09_19_213537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_193157) do
     t.integer "count", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "checkout_id"
     t.index ["item_id"], name: "index_checkout_items_on_item_id"
   end
 
@@ -36,10 +37,18 @@ ActiveRecord::Schema.define(version: 2018_09_19_193157) do
     t.integer "status", default: 0
   end
 
+  create_table "item_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size_id", null: false
+    t.integer "item_type_id", null: false
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -49,12 +58,6 @@ ActiveRecord::Schema.define(version: 2018_09_19_193157) do
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

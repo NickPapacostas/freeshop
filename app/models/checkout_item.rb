@@ -1,4 +1,7 @@
 class CheckoutItem < ApplicationRecord
- 	has_one :item
+ 	belongs_to :item
+
+ 	def self.create_from_params(checkout_item_params)
+ 	end
 end
 

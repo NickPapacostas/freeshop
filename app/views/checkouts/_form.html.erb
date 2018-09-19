@@ -1,0 +1,10 @@
+<%= form_for @checkout do |f| %>
+	<div>Add Items</div>
+	<div class="divider"></div>
+	<%= f.fields_for :checkout_items do |checkout_items_form| %>
+		<%= checkout_items_form.label "Select type and size:" %>
+		<%= checkout_items_form.collection_select(:item_id, Item.all, :id, :display_name) %>
+		<%= checkout_items_form.number_field :count %>
+	<% end %>
+	<%= f.submit "Finished Checking out" %>
+<% end %>

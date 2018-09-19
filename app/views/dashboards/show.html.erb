@@ -24,9 +24,9 @@
 		</div>
 		<div class="divider-vert"></div>
 		<div class="column col-5">
-			<%= button_to("Checkout", "/checkout/new") %>
-			<%= button_to("Schedule an appointment", "/appointment/new") %>
-			<%= button_to("Create a membership", "/membership/new") %>
+			<div><%= link_to("Checkout", new_checkout_path) %></div>
+			<div><%= link_to("Schedule an appointment", new_appointment_path) %></div>
+			<div><%= link_to("Create a membership", new_membership_path) %></div>
 		</div>
 	</div>
 </div>
