@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_224022) do
+ActiveRecord::Schema.define(version: 2018_09_19_193157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,25 @@ ActiveRecord::Schema.define(version: 2018_09_16_224022) do
     t.boolean "attended", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "datetime", null: false
+  end
+
+  create_table "checkout_items", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.integer "count", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_checkout_items_on_item_id"
   end
 
   create_table "checkouts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,9 +45,22 @@ ActiveRecord::Schema.define(version: 2018_09_16_224022) do
   create_table "memberships", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "notes"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "sizes", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "volunteers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -39,10 +68,8 @@ ActiveRecord::Schema.define(version: 2018_09_16_224022) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_volunteers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_volunteers_on_reset_password_token", unique: true
   end
 
 end

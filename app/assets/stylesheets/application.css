@@ -12,4 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ *= require spectre
  */
+
+.accordions {
+    margin:1em 0
+}
+.accordions {
+    cursor:pointer;
+    margin:0 0 1px 0;
+    padding:4px 10px
+}
+.accordion .current {
+    cursor:default
+}
+.accordions div.accordion {
+    padding:5px 10px
+}

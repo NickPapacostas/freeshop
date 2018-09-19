@@ -6,10 +6,48 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar">
+      <section class="navbar-section">
+        <a href="#" class="btn btn-link">Appointments</a>
+        <a href="#" class="btn btn-link">Memberships</a>
+        <a href="#" class="btn btn-link">Members</a>
+        <a href="#" class="btn btn-link">Checkout</a>
+      </section>
+    </header>
+
+    <div class="container">
+      <div class="columns">
+        <div class="column col-3 hide-sm">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a href="#">Appointments</a>
+            </li>
+            <li class="nav-item">
+              <a href="#">Memberships</a>
+            </li>
+            <li class="nav-item">
+              <a href="#">Members</a>
+            </li>
+            <li class="nav-item">
+              <a href="#">Admin</a>
+            </li>
+          </ul>
+
+        </div>
+        <div class="col-9 col-sm-12">
+          <%= yield %>
+        </div>
+      </div>
+
+    </div>
+
+
   </body>
 </html>
