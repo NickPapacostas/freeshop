@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :checkouts
   resources :appointments
   resources :memberships
+  resources :members
 
 	devise_scope :volunteer do
 	  # add after sign in path

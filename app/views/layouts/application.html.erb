@@ -14,7 +14,7 @@
       <section class="navbar-section">
         <a href="#" class="btn btn-link">Appointments</a>
         <%= link_to "Memberships", memberships_path %>
-        <a href="#" class="btn btn-link">Members</a>
+        <%= link_to "Members", members_path %>
         <%= link_to "Checkout", new_checkout_path, class: "btn btn-link" %>
       </section>
     </header>
@@ -33,7 +33,7 @@
               <%= link_to "Memberships", memberships_path %>
             </li>
             <li class="nav-item">
-              <a href="#">Members</a>
+              <%= link_to "Members", members_path %>
             </li>
             <li class="nav-item">
               <a href="#">Admin</a>
