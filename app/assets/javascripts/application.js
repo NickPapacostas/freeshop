@@ -14,7 +14,12 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+//= require datatables
 //= require_tree .
 //= require layout
 //= require nested_form_fields
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+//= require calendar
+//= require memberships

@@ -13,6 +13,14 @@ class MembershipsController < ApplicationController
 		end
 	end
 
+	def index
+		@memberships = Membership.all
+	  respond_to do |format|
+	    format.html
+	    format.json { render json: MembershipDatatable.new(params) }
+	  end
+	end
+
 	private
 
 	def membership_params

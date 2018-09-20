@@ -1,6 +1,6 @@
 Todo:
 
-- [ ] create membership
+- [x] create membership
 		- add point of contact check box
 - [ ] create appointments
 - [ ] view memberships

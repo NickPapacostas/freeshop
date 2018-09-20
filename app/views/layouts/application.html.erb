@@ -13,7 +13,7 @@
     <header class="navbar">
       <section class="navbar-section">
         <a href="#" class="btn btn-link">Appointments</a>
-        <a href="#" class="btn btn-link">Memberships</a>
+        <%= link_to "Memberships", memberships_path %>
         <a href="#" class="btn btn-link">Members</a>
         <%= link_to "Checkout", new_checkout_path, class: "btn btn-link" %>
       </section>
@@ -21,16 +21,16 @@
 
     <div class="container">
       <div class="columns">
-        <div class="column col-3 hide-sm">
+        <div class="column col-1 hide-sm">
           <ul class="nav">
             <li class="nav-item">
-              <a href="#">Dashboard</a>
+              <%= link_to "Dashboard", volunteer_dashboard_path(current_volunteer), class: "btn btn-link" %>
             </li>
             <li class="nav-item active">
               <a href="#">Appointments</a>
             </li>
             <li class="nav-item">
-              <a href="#">Memberships</a>
+              <%= link_to "Memberships", memberships_path %>
             </li>
             <li class="nav-item">
               <a href="#">Members</a>
@@ -41,7 +41,7 @@
           </ul>
 
         </div>
-        <div class="col-9 col-sm-12">
+        <div class="col-11 col-sm-12">
           <%= yield %>
         </div>
       </div>
