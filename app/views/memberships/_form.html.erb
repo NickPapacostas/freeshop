@@ -1,0 +1,33 @@
+<%= form_for @membership do |f| %>
+	<div>Add Members</div>
+	<div class="divider"></div>
+	<%= f.nested_fields_for :members do |member_form| %>
+		<div>
+			<%= member_form.label "First name:" %>
+			<%= member_form.text_field :first_name %>
+
+			<%= member_form.label "Last name:" %>
+			<%= member_form.text_field :last_name %>
+
+			<%= member_form.label "Phone number:" %>
+			<%= member_form.text_field :phone_number %>
+		</div>
+
+		<div>
+			<%= member_form.label "Email:" %>
+			<%= member_form.text_field :email, type: 'email' %>
+
+			<%= member_form.label "Document number:" %>
+			<%= member_form.text_field :document_number %>
+
+			<%= member_form.label "Notes:" %>
+			<%= member_form.text_field :notes %>
+			<%= member_form.remove_nested_fields_link 'x', data: { confirm: 'Are you sure?' } %>
+		</div>
+
+		<div class="divider"></div>
+	<% end %>
+
+	<%= f.add_nested_fields_link :members %>
+	<%= f.submit "Create Membership" %>
+<% end %>
