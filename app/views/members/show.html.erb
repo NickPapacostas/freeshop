@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="columns">
+		<div class="column col-6">
+			<div class="member">
+				<div>
+					First name: <%= @member.first_name %>
+				</div>
+
+				<div>
+					Last name: <%= @member.last_name %>
+				</div>
+
+				<div>
+					Phone number: <%= @member.phone_number %>
+				</div>
+
+				<div>
+					Email: <%= @member.email %>
+				</div>
+
+				<div>
+					Document number: <%= @member.document_number %>
+				</div>
+
+				<div>
+					Notes: <%= @member.notes%>
+				</div>
+			</div>
+		</div>
+		<%= link_to "Edit member", edit_member_path(@member), class: 'btn' %>
+	</div>
+</div>

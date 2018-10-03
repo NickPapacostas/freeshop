@@ -17,7 +17,7 @@ class MembershipsController < ApplicationController
 		@memberships = Membership.all
 	  respond_to do |format|
 	    format.html
-	    format.json { render json: MembershipDatatable.new(params) }
+	    format.json { render json: MembershipDatatable.new(params, view_context: view_context) }
 	  end
 	end
 

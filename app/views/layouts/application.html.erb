@@ -24,16 +24,18 @@
         <div class="column col-1 hide-sm">
           <ul class="nav">
             <li class="nav-item">
-              <%= link_to "Dashboard", volunteer_dashboard_path(current_volunteer), class: "btn btn-link" %>
-            </li>
-            <li class="nav-item active">
-              <a href="#">Appointments</a>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Memberships", memberships_path %>
+             <% if current_volunteer %>
+                <%= link_to "Dashboard", volunteer_dashboard_path(current_volunteer), class: "btn btn-link" %>
+             <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "Members", members_path %>
+              <%= nav_link "Appointments", appointments_path %>
+            </li>
+            <li class="nav-item">
+              <%= nav_link "Memberships", memberships_path %>
+            </li>
+            <li class="nav-item">
+              <%= nav_link "Members", members_path %>
             </li>
             <li class="nav-item">
               <a href="#">Admin</a>
@@ -41,7 +43,8 @@
           </ul>
 
         </div>
-        <div class="col-11 col-sm-12">
+        <div class="divider-vert hide-sm"></div>
+        <div class="col-10 col-sm-12">
           <%= yield %>
         </div>
       </div>

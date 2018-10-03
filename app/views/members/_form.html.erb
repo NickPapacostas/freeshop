@@ -1,0 +1,34 @@
+<%= form_for @member do |f| %>
+	<div>
+		<%= f.label "First name:" %>
+		<%= f.text_field :first_name %>
+	</div>
+
+	<div>
+		<%= f.label "Last name:" %>
+		<%= f.text_field :last_name %>
+	</div>
+
+	<div>
+		<%= f.label "Phone number:" %>
+		<%= f.text_field :phone_number %>
+	</div>
+
+	<div>
+		<%= f.label "Email:" %>
+		<%= f.text_field :email, type: 'email' %>
+	</div>
+
+	<div>
+		<%= f.label "Document number:" %>
+		<%= f.text_field :document_number %>
+	</div>
+
+	<div>
+		<%= f.label "Notes:" %>
+		<%= f.text_field :notes %>
+
+	</div>
+
+	<%= f.submit "Update member" %>
+<% end %>
