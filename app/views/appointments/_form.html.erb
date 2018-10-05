@@ -12,7 +12,10 @@
 				<%= f.datetime_local_field :datetime %>
 
 				<%= f.label "Membership" %>
-				<%= f.datetime_local_field :datetime %>
+				<%= f.number_field :membership_id %>
+
+				<%= f.label "Number of People" %>
+				<%= f.number_field :people_count %>
 				<%= f.submit "Create appointment" %>
 			<% end %>
 		</div>

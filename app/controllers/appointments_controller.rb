@@ -4,11 +4,13 @@ class AppointmentsController < ApplicationController
 	end
 
 	def create
-		@appoint = Appointment.new(appointment_params)
+		@appointment = Appointment.new(appointment_params)
 
 		if @appointment.save
-			render 'show'
+			@appointment = Appointment.new
+			render 'new'
 		else
+			flash[:error] = 'didnt save appointment'
 			render 'new'
 		end
 	end
@@ -26,6 +28,6 @@ class AppointmentsController < ApplicationController
 	private
 
 	def appointment_params
-		params.require(:appointment).permit(:datetime)
+		params.require(:appointment).permit(:datetime, :membership_id, :people_count)
 	end
 end

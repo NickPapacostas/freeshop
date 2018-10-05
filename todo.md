@@ -6,3 +6,4 @@ Todo:
 - [ ] view memberships
 - [ ] view members
 - [ ] view appointments
+- [ ] flash_messages

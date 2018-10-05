@@ -15,6 +15,11 @@ $(document).ready(function() {
 	        }));
 	      }
 	    });
+	  },
+	  eventClick: function(calEvent, jsEvent, view) {
+	  	$('#appointment_datetime').val(calEvent.start.toString())
+	    $(this).css('border-color', 'red');
+
 	  }
 	});
 })

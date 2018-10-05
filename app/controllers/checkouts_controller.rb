@@ -12,7 +12,6 @@ class CheckoutsController < ApplicationController
 			@checkout.status = "completed"
 			render 'show'
 		else
-			binding.pry
 			render 'new', checkout: @checkout
 		end
 	end
