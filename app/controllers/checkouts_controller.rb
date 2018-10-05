@@ -12,14 +12,19 @@ class CheckoutsController < ApplicationController
 			@checkout.status = "completed"
 			render 'show'
 		else
+			binding.pry
 			render 'new', checkout: @checkout
 		end
+	end
+
+	def show
+		@checkout = Checkout.find(params[:id])
 	end
 
 
 	private
 
 	def checkout_params
-		params.require(:checkout).permit(checkout_items_attributes: [:item_id, :count])
+		params.require(:checkout).permit(:appointment_id, checkout_items_attributes: [:item_id, :count])
 	end
 end

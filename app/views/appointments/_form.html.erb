@@ -1,9 +1,20 @@
-<div id="calendar"></div>
-<%= form_for @appointment do |f| %>
-	<div>Create Appointment</div>
-	<div class="divider"></div>
-	<%= f.label "Date and Time (choose on calendar)" %>
-	<%= f.datetime_local_field :datetime %>
-	<%= f.submit "Create appointment" %>
-<% end %>
+<div class="container">
+  <div class="columns">
+    <div class="column col-9">
+			<div id="calendar"></div>
+		</div>
+		<div class="divider-vert"></div>
+		<div class="column col-2">
+			<%= form_for @appointment do |f| %>
+				<div>Create Appointment</div>
+				<div class="divider"></div>
+				<%= f.label "Date and Time (choose on calendar)" %>
+				<%= f.datetime_local_field :datetime %>
 
+				<%= f.label "Membership" %>
+				<%= f.datetime_local_field :datetime %>
+				<%= f.submit "Create appointment" %>
+			<% end %>
+		</div>
+	</div>
+</div>

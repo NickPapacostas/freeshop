@@ -31,3 +31,8 @@
 .accordions div.accordion {
     padding:5px 10px
 }
+
+.btn {
+	margin: 5px;
+	display: block;
+}

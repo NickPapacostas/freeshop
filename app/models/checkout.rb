@@ -1,5 +1,8 @@
 class Checkout < ApplicationRecord
+
 	has_many :checkout_items
+	belongs_to :appointment
+	has_one :membership, through: :appointment
 
 	enum status: [:pending, :cancelled, :completed]
 

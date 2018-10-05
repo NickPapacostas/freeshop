@@ -1,5 +1,11 @@
 <div class="container">
 	<div class="columns">
+		<div class="column col-5 text-center">
+			<%= link_to("Checkout", new_checkout_path, class: 'btn btn-primary') %>
+			<%= link_to("Schedule an appointment", new_appointment_path, class: 'btn btn-primary') %>
+			<%= link_to("Create a membership", new_membership_path, class: 'btn btn-primary') %>
+		</div>
+		<div class="divider-vert"></div>
 
 		<div class="column col-5">
 			Today's Appointments
@@ -21,12 +27,6 @@
 					</ul>
 				</div>
 			</div>
-		</div>
-		<div class="divider-vert"></div>
-		<div class="column col-5">
-			<div><%= link_to("Checkout", new_checkout_path) %></div>
-			<div><%= link_to("Schedule an appointment", new_appointment_path) %></div>
-			<div><%= link_to("Create a membership", new_membership_path) %></div>
 		</div>
 	</div>
 </div>

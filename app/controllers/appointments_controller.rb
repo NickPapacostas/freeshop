@@ -13,6 +13,16 @@ class AppointmentsController < ApplicationController
 		end
 	end
 
+	def index
+		@timeslots = Appointment.for_calendar
+
+		respond_to do |format|
+	    format.html
+	    format.json { render json: @timeslots }
+	  end
+
+	end
+
 	private
 
 	def appointment_params

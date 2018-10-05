@@ -1,1 +1,14 @@
-showing <%= @checkout.inspect %>
+<div class="checkout">
+	Name: <%= @checkout.membership.name %>
+	Date: <%= @checkout.updated_at %>
+	Appointment: <%= link_to @checkout.appointment.datetime, checkout_path(@checkout) %>
+	Items:
+	<ul>
+		<% @checkout.checkout_items.each do |checkout_item| %>
+		<li><%= checkout_item.item.name %> <%= checkout_item.count %> </li>
+		<% end %>
+	</ul>
+
+</div>
+
+<%= @checkout.inspect %>

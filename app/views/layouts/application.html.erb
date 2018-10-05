@@ -11,13 +11,14 @@
 
   <body>
     <header class="navbar">
-      <section class="navbar-section">
+      Freeshop
+<!--       <section class="navbar-section">
         <a href="#" class="btn btn-link">Appointments</a>
         <%= link_to "Memberships", memberships_path %>
         <%= link_to "Members", members_path %>
         <%= link_to "Checkout", new_checkout_path, class: "btn btn-link" %>
       </section>
-    </header>
+ -->    </header>
 
     <div class="container">
       <div class="columns">
@@ -25,7 +26,7 @@
           <ul class="nav">
             <li class="nav-item">
              <% if current_volunteer %>
-                <%= link_to "Dashboard", volunteer_dashboard_path(current_volunteer), class: "btn btn-link" %>
+                <%= nav_link "Dashboard", volunteer_dashboard_path(current_volunteer) %>
              <% end %>
             </li>
             <li class="nav-item">

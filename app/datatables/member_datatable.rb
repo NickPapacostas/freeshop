@@ -6,7 +6,7 @@ class MemberDatatable < ApplicationDatatable
       first_name: { source: "Member.first_name", cond: :like, searchable: true, orderable: true },
       last_name:  { source: "Member.last_name",  cond: :like },
       email:      { source: "Member.email" },
-      phone:      { source: "Member.phone" },
+      phone:      { source: "Member.phone_number" },
       document_number:      { source: "Member.document_number" }
     }
   end
