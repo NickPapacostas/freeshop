@@ -16,6 +16,7 @@
 //= require activestorage
 //= require datatables
 //= require_tree .
+//= require chosen-jquery
 //= require layout
 //= require nested_form_fields
 //= require moment

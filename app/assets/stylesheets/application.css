@@ -15,6 +15,7 @@
  *= require_self
  *= require spectre
  *= require fullcalendar
+ *= require chosen
 */
 
 .accordions {
