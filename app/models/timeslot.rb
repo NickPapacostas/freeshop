@@ -18,11 +18,20 @@ class Timeslot
 		people_count >= max_people
 	end
 
-	def to_h
+	def for_month
 		{
 			datetime: datetime,
 			full: full?,
 			people_count: people_count
+		}
+	end
+
+	def for_today
+		{
+			datetime: datetime,
+			full: full?,
+			people_count: people_count,
+			appointments: appointments.map(&:for_today)
 		}
 	end
 end

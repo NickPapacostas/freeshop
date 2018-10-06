@@ -21,6 +21,10 @@ class MembershipsController < ApplicationController
 	  end
 	end
 
+	def show
+		@membership = Membership.find(params[:id])
+	end
+
 	private
 
 	def membership_params

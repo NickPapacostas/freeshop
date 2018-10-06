@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
 
 	def show
 		@volunteer = current_volunteer
-		@upcoming_appointments = Appointment.today
+		@todays_appointments = Appointment.today
 	end
 
 end

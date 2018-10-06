@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :checkouts
-  resources :appointments
+  resources :appointments do
+    collection do
+      get 'today', to: 'appointments#today'
+    end
+  end
+
   resources :memberships
   resources :members
 

@@ -16,13 +16,22 @@ class AppointmentsController < ApplicationController
 	end
 
 	def index
-		@timeslots = Appointment.for_calendar
+		@timeslots = params[:d] ? Appointment.for_month(params[:d]) : Appointment.for_month
 
 		respond_to do |format|
 	    format.html
 	    format.json { render json: @timeslots }
 	  end
 
+	end
+
+	def today
+		@timeslots = Appointment.today
+
+		respond_to do |format|
+	    format.html
+	    format.json { render json: @timeslots }
+	  end
 	end
 
 	private

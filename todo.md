@@ -7,3 +7,5 @@ Todo:
 - [ ] view members
 - [ ] view appointments
 - [ ] flash_messages
+- [ ] delete members
+- [ ] date chaange buttons

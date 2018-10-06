@@ -1,1 +1,11 @@
-showing <%= @membership.inspect %>
+<%= render partial: 'form', object: @membership %>
+
+<div class='divider'></div>
+<h2>Appointment history</h2>
+<ul class='membership-appointments'>
+	<% @membership.appointments.each do |appointment| %>
+		<li class='membership-appointment'>
+			<%= link_to appointment.datetime, appointment_path(appointment) %>
+		</li>
+	<% end %>
+</ul>

@@ -1,5 +1,6 @@
 class Membership < ApplicationRecord
 	has_many :members
+	has_many :appointments
 
 	has_one :point_of_contact, class_name: 'Member'
 

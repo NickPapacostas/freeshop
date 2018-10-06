@@ -7,17 +7,17 @@ class Appointment < ApplicationRecord
 	@@appointment_length = 30.minutes
 
 	def self.today
-		where(datetime: Date.today.all_day)
+		timeslots_for_day.map(&:for_today)
 	end
 
 	def self.this_month
 		where(datetime: Date.today.beginning_of_month..Date.today.end_of_month)
 	end
 
-	def self.for_calendar(month = Date.today.month)
+	def self.for_month(month = Date.today.month)
 		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
-			timeslots << timeslots_for_day(Date.today.beginning_of_month + day_in_month.days).map(&:to_h)
+			timeslots << timeslots_for_day(Date.today.beginning_of_month + day_in_month.days).map(&:for_month)
 		end
 		timeslots.flatten
 	end
@@ -28,7 +28,7 @@ class Appointment < ApplicationRecord
 		end
 	end
 
-	def self.timeslots_for_day(date, appointment_length = @@appointment_length)
+	def self.timeslots_for_day(date = Date.today, appointment_length = @@appointment_length)
 		timeslots = []
 		start_time = date.to_time + 9.hours + appointment_length
 		timeslots << Timeslot.new(start_time)
@@ -48,6 +48,12 @@ class Appointment < ApplicationRecord
 		datetime
 	end
 
+	def for_today
+		{
+			name: membership.name,
+			people_count: people_count
+		}
+	end
 
 	# dev helpers
 

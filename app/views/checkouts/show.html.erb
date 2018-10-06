@@ -5,10 +5,8 @@
 	Items:
 	<ul>
 		<% @checkout.checkout_items.each do |checkout_item| %>
-		<li><%= checkout_item.item.name %> <%= checkout_item.count %> </li>
+		<li><%= checkout_item.item.display_name %> <%= checkout_item.count %> </li>
 		<% end %>
 	</ul>
 
 </div>
-
-<%= @checkout.inspect %>
