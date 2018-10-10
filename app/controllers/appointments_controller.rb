@@ -25,6 +25,16 @@ class AppointmentsController < ApplicationController
 
 	end
 
+	def by_datetime
+		@appointments = Appointment.where(datetime: Time.parse(params[:datetime])).map(&:for_today)
+
+		respond_to do |format|
+	    format.html
+	    format.json { render json: @appointments }
+	  end
+
+	end
+
 	def today
 		@timeslots = Appointment.today
 

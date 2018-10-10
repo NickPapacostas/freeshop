@@ -6,19 +6,21 @@ class MembershipDatatable < ApplicationDatatable
       first_name: { source: "Member.first_name", cond: :like, searchable: true, orderable: true },
       last_name:  { source: "Member.last_name",  cond: :like },
       email:      { source: "Member.email" }
-  }
+    }
   end
 
 
-  def_delegators :@view, :link_to
+  def_delegators :@view, :link_to,:membership_path
 
   def data
     records.map do |record|
+      first_name = record.point_of_contact.try(:first_name)
+      last_name = record.point_of_contact.try(:last_name)
       {
         # example:
         id: record.id,
-        first_name: record.point_of_contact.try(:first_name),
-        last_name: record.point_of_contact.try(:last_name),
+        first_name: link_to(first_name, membership_path(record)),
+        last_name: link_to(last_name, membership_path(record)),
         email: record.point_of_contact.email
       }
     end

@@ -5,19 +5,37 @@
 		</div>
 		<div class="divider-vert"></div>
 		<div class="column col-2">
-			<%= form_for @appointment do |f| %>
-				<div>Create Appointment</div>
-				<div class="divider"></div>
-				<%= f.label "Date and Time (choose on calendar)" %>
-				<%= f.datetime_local_field :datetime %>
+			<div class="event-form">
+				<%= form_for @appointment do |f| %>
+					<div>Create Appointment</div>
+					<div class="divider"></div>
+					<%= f.label "Date and Time (choose on calendar)" %>
+					<%= f.datetime_field :datetime %>
 
-				<%= f.label "Membership" %>
-				<%= f.number_field :membership_id %>
+					<%= f.label "Membership" %>
+					<%= f.number_field :membership_id %>
 
-				<%= f.label "Number of People" %>
-				<%= f.number_field :people_count %>
-				<%= f.submit "Create appointment" %>
-			<% end %>
+					<%= f.label "Number of People" %>
+					<%= f.number_field :people_count %>
+					<%= f.submit "Create appointment" %>
+				<% end %>
+			</div>
+
+			<div id="timeslot-view">
+				<div>
+				  <table id="timeslot-appointments-table table table-hover">
+				    <thead>
+				      <tr>
+				        <th>Membership Id</th>
+				        <th>Name</th>
+				        <th># People</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    </tbody>
+				  </table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

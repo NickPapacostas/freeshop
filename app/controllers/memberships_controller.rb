@@ -7,6 +7,8 @@ class MembershipsController < ApplicationController
 	def create
 		@membership = Membership.new(membership_params)
 		if @membership.save && @membership.members.map(&:save)
+			@membership.point_of_contact = @membership.members.first
+			@membership.save
 			render 'show'
 		else
 			render 'new'
@@ -23,6 +25,18 @@ class MembershipsController < ApplicationController
 
 	def show
 		@membership = Membership.find(params[:id])
+	end
+
+	def update
+		@membership = Membership.find(params[:id])
+		if @membership.update(membership_params)
+			flash[:success] = 'Membership updated'
+			render 'show'
+		else
+			flash[:error] = 'Membership not updated'
+			render 'show'
+		end
+
 	end
 
 	private

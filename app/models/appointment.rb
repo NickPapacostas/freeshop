@@ -29,6 +29,7 @@ class Appointment < ApplicationRecord
 	end
 
 	def self.timeslots_for_day(date = Date.today, appointment_length = @@appointment_length)
+		# appointment group by datetime for timeslots
 		timeslots = []
 		start_time = date.to_time + 9.hours + appointment_length
 		timeslots << Timeslot.new(start_time)

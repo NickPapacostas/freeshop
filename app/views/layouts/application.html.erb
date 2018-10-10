@@ -46,6 +46,9 @@
         </div>
         <div class="divider-vert hide-sm"></div>
         <div class="col-10 col-sm-12">
+          <% flash.each do |key, value| %>
+            <%= content_tag :div, value, class: "flash #{key}" %>
+          <% end %>
           <%= yield %>
         </div>
       </div>

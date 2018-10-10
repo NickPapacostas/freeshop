@@ -1,16 +1,17 @@
 $(document).ready(function() {
 	$('#calendar').fullCalendar({
-		defaultView: 'listMonth',
+		defaultView: 'month',
 	  events: function(start, end, timezone, callback) {
 	    $.ajax({
 	      url: '/appointments',
 	      dataType: 'json',
-	      success: function(appointments) {
-	        callback(appointments.map(function(appointment) {
-	        	var backgroundColor = appointment.full ? 'red': '#39A778'
+	      success: function(timeslots) {
+	      	console.log(timeslots)
+	        callback(timeslots.map(function(timeslot) {
+	        	var backgroundColor = timeslot.full ? 'red': '#39A778'
             return {
-            	title: '' + appointment.people_count,
-            	start: appointment.datetime,
+            	title:  '' + timeslot.people_count,
+            	start: timeslot.datetime,
             	backgroundColor: backgroundColor
             }
 	        }));
@@ -19,28 +20,22 @@ $(document).ready(function() {
 	  },
 	  eventClick: function(calEvent, jsEvent, view) {
 	  	$('#appointment_datetime').val(calEvent.start.toString())
-	    $(this).css('border-color', 'red');
 
+	    $.ajax({
+	      url: '/appointments/by_datetime?datetime=' + moment.utc(calEvent.start).valueOf() ,
+	      dataType: 'json',
+	      success: function(appointments) {
+	        appointments.map(function(appointment) {
+	        	console.log(appointment)
+	        	var rowHTML = '<tr><td>' + appointment.name + '</td><td>' + appointment.people_count + '</td></tr>'
+	        	$('#timeslot-appointments-table tr:last').after(rowHTML);
+
+	        });
+	      }
+	    });
 	  },
  		eventMouseOver:	function( event, jsEvent, view ) {
 
- 		},
-
- 		viewRender: function(view, element) {
-	    // $.ajax({
-	    //   url: '/appointments?d=' + view.start.toISOString(),
-	    //   dataType: 'json',
-	    //   success: function(appointments) {
-	    //     callback(appointments.map(function(appointment) {
-	    //     	var backgroundColor = appointment.full ? 'red': '#39A778'
-     //        return {
-     //        	title: '' + appointment.people_count,
-     //        	start: appointment.datetime,
-     //        	backgroundColor: backgroundColor
-     //        }
-	    //     }));
-	    //   }
-	    // });
  		}
 
 	});

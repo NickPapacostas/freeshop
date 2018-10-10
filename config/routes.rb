@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :appointments do
     collection do
       get 'today', to: 'appointments#today'
+      get 'by_datetime', to: 'appointments#by_datetime'
     end
   end
 

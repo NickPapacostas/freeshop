@@ -53,5 +53,25 @@
 	float: right;
 }
 
+.add-item {
+	max-width: 150px;
+	float: left;
+}
+
 .add-member {
+	max-width: 150px;
+	float: left;
+	margin-right: 30px;
+}
+
+.checkout-submit {
+	float: right;
+}
+
+.new_checkout {
+	text-align: center;
+}
+
+.point_of_contact {
+	color: #3634d2;
 }

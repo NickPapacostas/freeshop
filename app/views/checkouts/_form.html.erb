@@ -4,15 +4,15 @@
 	<%= f.hidden_field :appointment_id, value: 3 %>
 	<%= f.nested_fields_for :checkout_items do |checkout_items_form| %>
 
-		<%= checkout_items_form.label "Select type and size:" %>
 		<%= checkout_items_form.collection_select(:item_id, @items, :id, :display_name, {}, class: 'chosen-select') %>
 
-		<%= checkout_items_form.label "Count:" %>
-		<%= checkout_items_form.number_field :count %>
+		<%= checkout_items_form.number_field :count, placeholder: "Count" %>
 
 		<%= checkout_items_form.remove_nested_fields_link 'x' %>
 	<% end %>
-
-	<%= f.add_nested_fields_link :checkout_items %>
-	<%= f.submit "Finished Checking out" %>
+	<div class="divider"></div>
+	<div class="checkout-buttons">
+		<%= f.add_nested_fields_link :checkout_items, "+", class: 'add-item btn btn-primary'  %>
+		<%= f.submit "Finished Checking out", class: "btn btn-primary checkout-submit" %>
+	</div>
 <% end %>

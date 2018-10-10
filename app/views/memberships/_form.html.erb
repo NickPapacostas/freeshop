@@ -1,11 +1,13 @@
 <%= form_for @membership do |f| %>
 <div>
-	<div>Add Members</div>
+	<div>Membership form</div>
 	<div class="divider"></div>
 	<div class="grid-container">
 		<%= f.nested_fields_for :members do |member_form| %>
 		<div class="grid-item">
 			<div class="form-group">
+
+				<div class="point_of_contact d-invisible">Point of Contact</div>
 
 				<div>
 					<%= member_form.label "First name:", class: "form-label" %>
@@ -34,31 +36,22 @@
 
 				<div>
 					<%= member_form.label "Notes:", class: "form-label" %>
-					<%= member_form.text_field :notes, class: "form-input" %>
-				</div>
-
-				<div>
-					<%= member_form.label "Point of contact:", class: "form-label" %>
-					<%= radio_button_tag :point_of_contact, '' %>
+					<%= member_form.text_area :notes, class: "form-input" %>
 				</div>
 
 				<%= member_form.remove_nested_fields_link 'Remove', data: { confirm: 'Are you sure?' }, class: "form-label cancel" %>
 
-
 				<div class="divider"></div>
+
 				<% end %>
 			</div>
 		</div>
 		<div class="grid-item">
-			<%= f.add_nested_fields_link :members, "+", class: 'btn add-member' %>
+			<%= f.add_nested_fields_link :members, "Add member", class: 'btn btn-primary add-member' %>
 
+			<%= f.submit "Create Membership", class: 'btn btn-primary' %>
 		</div>
 		</div>
 	</div>
-</div>
 <div>
-	<%= f.submit "Create Membership" %>
-</div>
-</div>
-
 <% end %>
