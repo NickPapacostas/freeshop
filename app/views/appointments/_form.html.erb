@@ -9,24 +9,26 @@
 				<%= form_for @appointment do |f| %>
 					<div>Create Appointment</div>
 					<div class="divider"></div>
-					<%= f.label "Date and Time (choose on calendar)" %>
-					<%= f.datetime_field :datetime %>
+					<%= f.label "Date and Time (choose on calendar)", class: 'form-label' %>
+					<%= f.datetime_field :datetime, class: 'form-input' %>
 
-					<%= f.label "Membership" %>
-					<%= f.number_field :membership_id %>
+					<%= f.label "Membership", class: 'form-label' %>
+					<%= f.number_field :membership_id, class: 'form-input' %>
 
-					<%= f.label "Number of People" %>
-					<%= f.number_field :people_count %>
-					<%= f.submit "Create appointment" %>
+					<%= f.label "Number of People", class: 'form-label' %>
+					<%= f.number_field :people_count, class: 'form-input' %>
+					<%= f.submit "Create appointment", { id: 'create_appointment', class: 'btn btn-primary'} %>
 				<% end %>
 			</div>
 
-			<div id="timeslot-view">
+			<div class="divider"></div>
+
+			<div id="timeslot-view" class="d-invisible">
+				<div id="current-timeslot"></div>
 				<div>
-				  <table id="timeslot-appointments-table table table-hover">
+				  <table id="timeslot-appointments-table" class="table table-hover">
 				    <thead>
 				      <tr>
-				        <th>Membership Id</th>
 				        <th>Name</th>
 				        <th># People</th>
 				      </tr>

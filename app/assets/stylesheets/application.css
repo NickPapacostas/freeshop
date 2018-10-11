@@ -82,3 +82,17 @@
 .point_of_contact {
 	color: #3634d2;
 }
+
+#new_appointment {
+	text-align: center;
+}
+
+#create_appointment {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: inline;
+}
+
+.timeslot-view {
+
+}

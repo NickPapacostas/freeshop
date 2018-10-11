@@ -24,16 +24,27 @@ $(document).ready(function() {
 	    });
 	  },
 	  eventClick: function(calEvent, jsEvent, view) {
+	  	$('#current-timeslot').text(calEvent.start.format('ddd D MMM YY - H:mm'))
 	  	$('#appointment_datetime').val(calEvent.start.toString())
+	    $('#timeslot-appointments-table > tbody > tr').remove();
 
 	    $.ajax({
-	      url: '/appointments/by_datetime?datetime=' + moment.utc(calEvent.start).valueOf() ,
+	      url: '/appointments/by_datetime?datetime=' + calEvent.start.toISOString(),
 	      dataType: 'json',
 	      success: function(appointments) {
+	      	if (appointments.length) {
+	  				$('#timeslot-view').removeClass('d-invisible')
+	      	} else {
+	      		$('#timeslot-view').addClass('d-invisible')
+	      	}
+
 	        appointments.map(function(appointment) {
 	        	console.log(appointment)
 	        	var rowHTML = '<tr><td>' + appointment.name + '</td><td>' + appointment.people_count + '</td></tr>'
-	        	$('#timeslot-appointments-table tr:last').after(rowHTML);
+	        	// $('#timeslot-appointments-table > tbody:last-child').append(rowHTML);
+
+       			$('#timeslot-appointments-table > tbody').append(rowHTML)
+
 
 	        });
 	      }
@@ -41,27 +52,7 @@ $(document).ready(function() {
 	  },
  		eventMouseOver:	function( event, jsEvent, view ) {
 
- 		} //,
-  	// viewRender: function(view, element) {
-	  //   $.ajax({
-	  //     url: '/appointments/by_month?month=' + view.end.month(),
-	  //     dataType: 'json',
-	  //     success: function(timeslots) {
-	  //     	console.log(timeslots)
-	  //       callback(timeslots.map(function(timeslot) {
-	  //       	var backgroundColor = timeslot.full ? 'red': '#39A778'
-   //          return {
-   //          	title:  '' + timeslot.people_count,
-   //          	start: timeslot.datetime,
-   //          	backgroundColor: backgroundColor
-   //          }
-	  //       }));
-	  //     }
-	  //   });
-  // }
-
-
-
+ 		}
 	});
 
 
