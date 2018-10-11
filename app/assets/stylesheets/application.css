@@ -18,6 +18,13 @@
  *= require chosen
 */
 
+.navbar {
+    font-size: 2em;
+    border-bottom: 1px solid;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 .accordions {
     margin:1em 0
 }

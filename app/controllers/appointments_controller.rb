@@ -25,8 +25,8 @@ class AppointmentsController < ApplicationController
 
 	end
 
-	def by_datetime
-		@appointments = Appointment.where(datetime: Time.parse(params[:datetime])).map(&:for_today)
+	def by_month
+		@appointments = Appointment.for_month(params[:month].to_i, params[:year].to_i)
 
 		respond_to do |format|
 	    format.html
@@ -35,8 +35,8 @@ class AppointmentsController < ApplicationController
 
 	end
 
-	def today
-		@timeslots = Appointment.today
+	def by_day
+		@timeslots = Appointment.for_day(Date.parse(params[:date]))
 
 		respond_to do |format|
 	    format.html

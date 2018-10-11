@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   resources :checkouts
   resources :appointments do
     collection do
-      get 'today', to: 'appointments#today'
+      get 'by_day', to: 'appointments#by_day'
       get 'by_datetime', to: 'appointments#by_datetime'
+      get 'by_month', to: 'appointments#by_month'
     end
   end
 
