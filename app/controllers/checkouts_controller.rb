@@ -10,7 +10,7 @@ class CheckoutsController < ApplicationController
 		@checkout = Checkout.new(checkout_params)
 
 		if @checkout.save && @checkout.checkout_items.map(&:save!)
-			@checkout.status = "completed"
+			@checkout.update_attribute(:status, 'completed')
 			@checkout.appointment.update_attribute(:attended, true)
 			render 'show'
 		else

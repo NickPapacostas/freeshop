@@ -54,7 +54,19 @@ $(document).ready(function() {
 	        	var rowHTML = '<tr>'
 	        	rowHTML += '<td>' + appointment.name + '</td>'
 	        	rowHTML += '<td>' + appointment.people_count + '</td>'
-	        	rowHTML += '<td><a href="' + appointment.checkout_link + '"> checkout </a></td>'
+
+	        	if (appointment.checkout_link) {
+	        		rowHTML += '<td><a href="' + appointment.checkout_link + '" class="btn"> checkout </a></td>'
+	        	}
+
+	        	if (appointment.destroy_link) {
+	        		rowHTML += '<td><a href="' + appointment.destroy_link + '" class="btn btn-error"> cancel </a></td>'
+	        	}
+
+	        	if (!appointment.destroy_link && !appointment.checkout_link) {
+	        		rowHTML += '<td> Completed </td>'
+	        	}
+
 	        	rowHTML += '</tr>'
 	        	console.log(rowHTML)
        			$('#timeslot-appointments-table > tbody').append(rowHTML)

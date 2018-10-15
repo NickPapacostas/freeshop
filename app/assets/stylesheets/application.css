@@ -18,6 +18,10 @@
  *= require chosen
 */
 
+body {
+	background-color: #fbfbfc;
+}
+
 .navbar {
     font-size: 2em;
     border-bottom: 1px solid;
@@ -54,6 +58,7 @@
 .grid-item {
   border-radius: 5px;
   padding: 20px;
+  text-align: center;
 }
 
 .cancel {
@@ -118,3 +123,12 @@ table#memberships-datatable tr {
 	font-weight: 1.3em;
 	text-align: center;
 }
+
+.account-header {
+	font-size: .7em;
+}
+
+.appointments-header {
+	text-align: center;
+}
+

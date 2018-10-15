@@ -62,10 +62,19 @@ class Appointment < ApplicationRecord
 
 	#should be in serializers
 	def for_today
+		if checkout && checkout.status == 'completed'
+			checkout_link = nil
+			destroy_link = nil
+		else
+			checkout_link = Rails.application.routes.url_helpers.new_checkout_path(appointment_id: id)
+			destroy_link = Rails.application.routes.url_helpers.appointment_path(id)
+		end
+
 		{
 			name: membership.name,
 			people_count: people_count,
-			checkout_link: Rails.application.routes.url_helpers.new_checkout_path(appointment_id: id)
+			checkout_link: checkout_link,
+			destroy_link: destroy_link
 		}
 	end
 
