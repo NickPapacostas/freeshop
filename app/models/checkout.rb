@@ -4,7 +4,7 @@ class Checkout < ApplicationRecord
 	belongs_to :appointment
 	has_one :membership, through: :appointment
 
-	enum status: [:pending, :cancelled, :completed]
+	enum status: [:incomplete, :cancelled, :completed]
 
 	accepts_nested_attributes_for :checkout_items, allow_destroy: true
 end

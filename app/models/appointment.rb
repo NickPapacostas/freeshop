@@ -4,6 +4,8 @@ class Appointment < ApplicationRecord
 
 	validates_presence_of :datetime
 
+	# after_create :create_checkout
+
 	@@appointment_length = 30.minutes
 
 	def self.today
@@ -48,6 +50,10 @@ class Appointment < ApplicationRecord
 
 	def attended?
 		attended
+	end
+
+	def display_datetime
+		datetime.strftime("%B %d, %Y, %A: %H:%M")
 	end
 
 	def start_time

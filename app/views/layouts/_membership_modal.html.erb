@@ -1,0 +1,26 @@
+<div class="modal modal-lg" id="membership_modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <a href="#close" class="membership_close btn btn-clear float-right" aria-label="Close"></a>
+      <div class="modal-title h5">Choose a membership (click to populate form)</div>
+    </div>
+    <div class="modal-body">
+      <div class="content">
+        <div>
+          <table id="memberships-datatable" data-source="<%= memberships_path(format: :json, modal: true) %>" class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

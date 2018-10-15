@@ -1,6 +1,6 @@
 class CheckoutsController < ApplicationController
 	def new
-		@checkout = Checkout.new
+		@checkout = Checkout.new(appointment_id: params[:appointment_id])
 		@checkout.checkout_items.build
 		@items = Item.all
 	end
@@ -10,6 +10,7 @@ class CheckoutsController < ApplicationController
 
 		if @checkout.save && @checkout.checkout_items.map(&:save!)
 			@checkout.status = "completed"
+			@checkout.appointment.update_attribute(:attended, true)
 			render 'show'
 		else
 			render 'new', checkout: @checkout

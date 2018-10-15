@@ -549,9 +549,9 @@ dl dd {
   -moz-appearance: none;
   appearance: none;
   background: #fff;
-  border: .05rem solid #5755d9;
+  border: .05rem solid #67aaf9;
   border-radius: .1rem;
-  color: #5755d9;
+  color: #67aaf9;
   cursor: pointer;
   display: inline-block;
   font-size: .8rem;

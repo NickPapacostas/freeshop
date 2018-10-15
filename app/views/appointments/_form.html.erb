@@ -1,6 +1,8 @@
 <div class="container">
   <div class="columns">
     <div class="column col-9">
+    	<%= render partial: 'layouts/membership_modal' %>
+
 			<div id="calendar"></div>
 		</div>
 		<div class="divider-vert"></div>
@@ -14,6 +16,7 @@
 
 					<%= f.label "Membership", class: 'form-label' %>
 					<%= f.number_field :membership_id, class: 'form-input' %>
+					<div class='membership_search btn'>Search</div>
 
 					<%= f.label "Number of People", class: 'form-label' %>
 					<%= f.number_field :people_count, class: 'form-input' %>

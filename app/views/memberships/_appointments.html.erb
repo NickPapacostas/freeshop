@@ -1,0 +1,31 @@
+<h2>Appointment history</h2>
+<ul class='membership-appointments'>
+	<div>
+	  <table id="appointments-table" class="table table-hover">
+	    <thead>
+	      <tr>
+	        <th>Date & Time</th>
+	        <th>Items</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+				<% @membership.appointments.each do |appointment| %>
+					<tr>
+						<td>
+							<%= link_to appointment.display_datetime, appointment_path(appointment) %>
+						</td>
+						<td>
+							<% if appointment.checkout %>
+								<ul>
+									<% appointment.checkout.checkout_items.each do |checkout_item| %>
+										<li><%= checkout_item.item.display_name %> <%= checkout_item.count %> </li>
+									<% end %>
+								</ul>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+	    </tbody>
+	  </table>
+	</div>
+</ul>

@@ -1,4 +1,13 @@
 $(document).ready(function() {
+	function colorForPeopleCount(count, full) {
+		if (full) {
+			return 'red'
+		} else if (count > 0) {
+			return '#e49b2e'
+		} else {
+			return '#39A778'
+		}
+	}
 	$('#calendar').fullCalendar({
 		defaultView: 'month',
 	  events: function(start, end, timezone, callback) {
@@ -13,9 +22,10 @@ $(document).ready(function() {
 	      success: function(timeslots) {
 	      	console.log(timeslots)
 	        callback(timeslots.map(function(timeslot) {
-	        	var backgroundColor = timeslot.full ? 'red': '#39A778'
+	        	var backgroundColor = colorForPeopleCount(timeslot.people_count, timeslot.full)
+	        	var title = timeslot.people_count == "0" ? "None" : timeslot.people_count
             return {
-            	title:  '' + timeslot.people_count,
+            	title:  '' + title,
             	start: timeslot.datetime,
             	backgroundColor: backgroundColor
             }
@@ -65,12 +75,40 @@ $(document).ready(function() {
 	      success: function(timeslots) {
 	        callback(timeslots.map(function(timeslot) {
 	        	var backgroundColor = timeslot.full ? 'red': '#39A778'
+	        	var title = timeslot.appointments.map(function(a) { return a.name }).join(" ")
+	        	if (!title.length) {
+	        		title = "No appointments"
+	        	}
             return {
-            	title: timeslot.appointments.map(function(a) { return a.name }).join(" "),
+            	title: title,
             	start: timeslot.datetime,
             	backgroundColor: backgroundColor
             }
 	        }));
+	      }
+	    });
+	  },
+	  eventClick: function(calEvent, jsEvent, view) {
+	  	$('#current-timeslot').text(calEvent.start.format('ddd D MMM YY - H:mm'))
+	  	$('#appointment_datetime').val(calEvent.start.toString())
+	    $('#timeslot-appointments-table > tbody > tr').remove();
+	    $.ajax({
+	      url: '/appointments/by_datetime?datetime=' + calEvent.start.toISOString(),
+	      dataType: 'json',
+	      success: function(appointments) {
+	      	if (appointments.length) {
+	  				$('#timeslot-view').removeClass('d-invisible')
+	      	} else {
+	      		$('#timeslot-view').addClass('d-invisible')
+	      	}
+
+	        appointments.map(function(appointment) {
+	        	console.log(appointment)
+	        	var rowHTML = '<tr><td>' + appointment.name + '</td><td>' + appointment.people_count + '</td></tr>'
+       			$('#timeslot-appointments-table > tbody').append(rowHTML)
+
+
+	        });
 	      }
 	    });
 	  }

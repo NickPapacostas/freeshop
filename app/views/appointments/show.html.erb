@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="columns">
+		<div class="column col-6">
+			<div class="appointment">
+				<div>
+					Date and time: <%= @appointment.display_datetime %>
+				</div>
+
+				<div>
+					Membership: <%= link_to @appointment.membership_id, membership_path(@appointment.membership) %>
+				</div>
+
+				<div>
+					Checkout status: <%= @appointment.checkout.nil? ? "Incomplete" : @appointment.checkout.status %>
+				</div>
+
+				<%= link_to "Checkout", new_checkout_path(appointment_id: @appointment.id), class: 'btn btn-primary' %>
+
+			</div>
+		</div>
+		<%= link_to "Cancel appointment", appointment_path(@appointment), method: :delete, data: { confirm: 'cancel appointment?' }, class: 'btn' %>
+	</div>
+</div>

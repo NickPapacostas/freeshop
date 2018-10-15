@@ -10,17 +10,25 @@ class MembershipDatatable < ApplicationDatatable
   end
 
 
-  def_delegators :@view, :link_to,:membership_path
+  def_delegators :@view, :link_to,:membership_path, :content_tag
 
   def data
     records.map do |record|
       first_name = record.point_of_contact.try(:first_name)
       last_name = record.point_of_contact.try(:last_name)
+
+      if !params[:modal]
+        first_name = link_to(first_name, membership_path(record))
+        last_name = link_to(last_name, membership_path(record))
+      end
+
+      id = content_tag(:div, record.id, {class: "membership-id", "data-id" => record.id})
+
       {
         # example:
-        id: record.id,
-        first_name: link_to(first_name, membership_path(record)),
-        last_name: link_to(last_name, membership_path(record)),
+        id: id,
+        first_name: first_name,
+        last_name: last_name,
         email: record.point_of_contact.email
       }
     end

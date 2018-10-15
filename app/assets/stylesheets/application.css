@@ -93,6 +93,18 @@
 	display: inline;
 }
 
-.timeslot-view {
+#timeslot-view {
+	padding-top: 25px;
+}
 
+table#memberships-datatable {
+	width: 90% !important;
+}
+
+table#memberships-datatable tr {
+	cursor: pointer;
+}
+
+.fc-content {
+	text-align: center;
 }

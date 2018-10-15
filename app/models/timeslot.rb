@@ -19,9 +19,13 @@ class Timeslot
 	end
 
 	def for_month
+		people_count = people_count()
+		remaining = max_people - people_count
+
 		{
 			datetime: datetime,
 			full: full?,
+			remaining: remaining,
 			people_count: people_count
 		}
 	end
