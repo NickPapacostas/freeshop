@@ -1,7 +1,5 @@
 <%= form_for @membership do |f| %>
 <div>
-	<div>Membership form</div>
-	<div class="divider"></div>
 	<div class="grid-container">
 		<%= f.nested_fields_for :members do |member_form| %>
 		<div class="grid-item">

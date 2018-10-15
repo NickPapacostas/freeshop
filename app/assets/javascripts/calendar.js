@@ -34,6 +34,7 @@ $(document).ready(function() {
 	    });
 	  },
 	  eventClick: function(calEvent, jsEvent, view) {
+	  	$('#timeslot_modal').addClass('active')
 	  	$('#current-timeslot').text(calEvent.start.format('ddd D MMM YY - H:mm'))
 	  	$('#appointment_datetime').val(calEvent.start.toString())
 	    $('#timeslot-appointments-table > tbody > tr').remove();
@@ -50,9 +51,12 @@ $(document).ready(function() {
 
 	        appointments.map(function(appointment) {
 	        	console.log(appointment)
-	        	var rowHTML = '<tr><td>' + appointment.name + '</td><td>' + appointment.people_count + '</td></tr>'
-	        	// $('#timeslot-appointments-table > tbody:last-child').append(rowHTML);
-
+	        	var rowHTML = '<tr>'
+	        	rowHTML += '<td>' + appointment.name + '</td>'
+	        	rowHTML += '<td>' + appointment.people_count + '</td>'
+	        	rowHTML += '<td><a href="' + appointment.checkout_link + '"> checkout </a></td>'
+	        	rowHTML += '</tr>'
+	        	console.log(rowHTML)
        			$('#timeslot-appointments-table > tbody').append(rowHTML)
 
 
@@ -104,7 +108,12 @@ $(document).ready(function() {
 
 	        appointments.map(function(appointment) {
 	        	console.log(appointment)
-	        	var rowHTML = '<tr><td>' + appointment.name + '</td><td>' + appointment.people_count + '</td></tr>'
+	        	var rowHTML = '<tr>'
+	        	rowHTML += '<td>' + appointment.name + '</td>'
+	        	rowHTML += '<td>' + appointment.people_count + '</td>'
+	        	rowHTML += '<td><a href="' + appointment.checkout_link + '"> checkout </a></td>'
+	        	rowHTML += '</tr>'
+	        	console.log(rowHTML)
        			$('#timeslot-appointments-table > tbody').append(rowHTML)
 
 

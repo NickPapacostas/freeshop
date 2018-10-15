@@ -1,7 +1,9 @@
 <%= form_for @checkout do |f| %>
-	<div>Add Items</div>
+	<div class="title">Membership #<%= @appointment.membership.id %></div>
+	<div class="title"><%= @appointment.display_datetime %></div>
 	<div class="divider"></div>
-	<%= f.hidden_field :appointment_id, value: 3 %>
+	<div>Add Items</div>
+	<%= f.hidden_field :appointment_id, value: @appointment.id %>
 	<%= f.nested_fields_for :checkout_items do |checkout_items_form| %>
 
 		<%= checkout_items_form.collection_select(:item_id, @items, :id, :display_name, {}, class: 'chosen-select') %>

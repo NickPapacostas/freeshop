@@ -108,3 +108,13 @@ table#memberships-datatable tr {
 .fc-content {
 	text-align: center;
 }
+
+.blue-background {
+	background-color: #d3e0f2cc !important;
+}
+
+.title {
+	font-size: 1.3em;
+	font-weight: 1.3em;
+	text-align: center;
+}

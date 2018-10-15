@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
 	def new
+		@appointment = Appointment.find(params[:appointment_id])
 		@checkout = Checkout.new(appointment_id: params[:appointment_id])
 		@checkout.checkout_items.build
 		@items = Item.all

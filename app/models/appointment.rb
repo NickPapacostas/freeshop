@@ -53,17 +53,19 @@ class Appointment < ApplicationRecord
 	end
 
 	def display_datetime
-		datetime.strftime("%B %d, %Y, %A: %H:%M")
+		datetime.localtime.strftime("%B %d, %Y, %A: %H:%M")
 	end
 
 	def start_time
 		datetime
 	end
 
+	#should be in serializers
 	def for_today
 		{
 			name: membership.name,
-			people_count: people_count
+			people_count: people_count,
+			checkout_link: Rails.application.routes.url_helpers.new_checkout_path(appointment_id: id)
 		}
 	end
 
