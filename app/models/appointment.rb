@@ -70,11 +70,14 @@ class Appointment < ApplicationRecord
 			destroy_link = Rails.application.routes.url_helpers.appointment_path(id)
 		end
 
+		show_link = Rails.application.routes.url_helpers.appointment_path(id)
+
 		{
 			name: membership.name,
 			people_count: people_count,
 			checkout_link: checkout_link,
-			destroy_link: destroy_link
+			destroy_link: destroy_link,
+			show_link: show_link
 		}
 	end
 

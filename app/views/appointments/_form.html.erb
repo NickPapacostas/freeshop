@@ -43,8 +43,6 @@
 									<div class="h5 title">Create Appointment</div>
 
 									<%= form_for @appointment do |f| %>
-										<%= f.label "Date and Time", class: 'form-label' %>
-										<%= f.datetime_field :datetime, class: 'form-input' %>
 
 										<div>
 											<div>
@@ -57,6 +55,9 @@
 
 										<%= f.label "Number of People", class: 'form-label' %>
 										<%= f.number_field :people_count, class: 'form-input' %>
+
+										<%= f.label "Date and Time", class: 'form-label' %>
+										<%= f.datetime_local_field :datetime, class: 'form-input' %>
 										<%= f.submit "Create appointment", { id: 'create_appointment', class: 'btn btn-primary'} %>
 									<% end %>
 								</div>

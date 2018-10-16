@@ -9,4 +9,12 @@ class Membership < ApplicationRecord
 	def name
 		point_of_contact.full_name
 	end
+
+	def completed_appointments
+		appointments.where(attended: true)
+	end
+
+	def point_of_contact
+		members.find { |m| m.id == point_of_contact_id }
+	end
 end

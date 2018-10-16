@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_out_path_for(volunteer)
-	  new_session_path
+	  new_session_path(volunteer)
 	end
 end

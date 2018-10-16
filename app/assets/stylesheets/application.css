@@ -80,6 +80,10 @@ body {
 	float: right;
 }
 
+.checkout-buttons {
+	display: inline-block;
+}
+
 .new_checkout {
 	text-align: center;
 }
@@ -112,6 +116,7 @@ table#memberships-datatable tr {
 
 .fc-content {
 	text-align: center;
+	cursor: pointer;
 }
 
 .blue-background {
@@ -132,3 +137,14 @@ table#memberships-datatable tr {
 	text-align: center;
 }
 
+.flashes {
+	font-size: .7em
+}
+
+.flash.success {
+	color: green;
+}
+
+.flash.error {
+	color: red;
+}

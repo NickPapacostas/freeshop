@@ -18,3 +18,9 @@
 		<%= f.submit "Finished Checking out", class: "btn btn-primary checkout-submit" %>
 	</div>
 <% end %>
+
+<% unless @appointment.membership.completed_appointments.empty? %>
+	<div class="appointment-history">
+		<%= render partial: 'memberships/appointments', locals: {membership: @appointment.membership} %>
+	</div>
+<% end %>

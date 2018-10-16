@@ -1,3 +1,10 @@
+<% if @membership.persisted? %>
+	<div class="h4">Membership #<%= @membership.id %></div>
+<% end %>
+
 <%= render partial: 'form', object: @membership %>
 <div class='divider'></div>
+
+<% unless @membership.completed_appointments.empty? %>
 <%= render partial: 'appointments', object: @membership.appointments %>
+<% end %>

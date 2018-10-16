@@ -15,12 +15,10 @@ $(document).ready(function() {
 	  	var year  = start.year();
 	  	if (month == "1") { year += 1 }
 
-	  	console.log(month, year)
 	    $.ajax({
 	      url: '/appointments/by_month?month=' + month + '&year=' + year,
 	      dataType: 'json',
 	      success: function(timeslots) {
-	      	console.log(timeslots)
 	        callback(timeslots.map(function(timeslot) {
 	        	var backgroundColor = colorForPeopleCount(timeslot.people_count, timeslot.full)
 	        	var title = timeslot.people_count == "0" ? "None" : timeslot.people_count
@@ -50,25 +48,18 @@ $(document).ready(function() {
 	      	}
 
 	        appointments.map(function(appointment) {
-	        	console.log(appointment)
 	        	var rowHTML = '<tr>'
 	        	rowHTML += '<td>' + appointment.name + '</td>'
 	        	rowHTML += '<td>' + appointment.people_count + '</td>'
-
+        		rowHTML += '<td><a href="' + appointment.show_link + '" class="btn btn-primary"> view </a>'
 	        	if (appointment.checkout_link) {
-	        		rowHTML += '<td><a href="' + appointment.checkout_link + '" class="btn"> checkout </a></td>'
+	        		rowHTML += '<a href="' + appointment.checkout_link + '" class="btn"> checkout </a>'
+	        		rowHTML += '<a href="' + appointment.destroy_link + '" class="btn btn-error"> cancel </a></td>'
 	        	}
+	        	rowHTML += '</td'
 
-	        	if (appointment.destroy_link) {
-	        		rowHTML += '<td><a href="' + appointment.destroy_link + '" class="btn btn-error"> cancel </a></td>'
-	        	}
-
-	        	if (!appointment.destroy_link && !appointment.checkout_link) {
-	        		rowHTML += '<td> Completed </td>'
-	        	}
 
 	        	rowHTML += '</tr>'
-	        	console.log(rowHTML)
        			$('#timeslot-appointments-table > tbody').append(rowHTML)
 
 
@@ -90,7 +81,7 @@ $(document).ready(function() {
 	      dataType: 'json',
 	      success: function(timeslots) {
 	        callback(timeslots.map(function(timeslot) {
-	        	var backgroundColor = timeslot.full ? 'red': '#39A778'
+	        	var backgroundColor = colorForPeopleCount(timeslot.people_count, timeslot.full)
 	        	var title = timeslot.appointments.map(function(a) { return a.name }).join(" ")
 	        	if (!title.length) {
 	        		title = "No appointments"
@@ -116,21 +107,28 @@ $(document).ready(function() {
 	  				$('#timeslot-view').removeClass('d-invisible')
 	      	} else {
 	      		$('#timeslot-view').addClass('d-invisible')
+	      		$('#create-checkout').removeClass('d-invisible')
+
 	      	}
 
 	        appointments.map(function(appointment) {
-	        	console.log(appointment)
 	        	var rowHTML = '<tr>'
 	        	rowHTML += '<td>' + appointment.name + '</td>'
 	        	rowHTML += '<td>' + appointment.people_count + '</td>'
-	        	rowHTML += '<td><a href="' + appointment.checkout_link + '"> checkout </a></td>'
+        		rowHTML += '<td><a href="' + appointment.show_link + '" class="btn btn-primary"> view </a>'
+	        	if (appointment.checkout_link) {
+	        		rowHTML += '<a href="' + appointment.checkout_link + '" class="btn"> checkout </a>'
+	        		rowHTML += '<a href="' + appointment.destroy_link + '" class="btn btn-error"> cancel </a></td>'
+	        	}
+	        	rowHTML += '</td'
+
+
 	        	rowHTML += '</tr>'
-	        	console.log(rowHTML)
        			$('#timeslot-appointments-table > tbody').append(rowHTML)
 
 
 	        });
-	      }
+	       }
 	    });
 	  }
 	});

@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
 		@appointment = Appointment.new(appointment_params)
 
 		if @appointment.save
+			flash[:success] = 'created appointment'
 			@appointment = Appointment.new
 			render 'new'
 		else

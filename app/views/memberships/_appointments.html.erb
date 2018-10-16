@@ -1,4 +1,5 @@
-<h2 class='appointments-header'>Appointment history</h2>
+<% membership ||= @membership %>
+<div class='appointments-header h4'>Appointment history</div>
 <ul class='membership-appointments'>
 	<div>
 	  <table id="appointments-table" class="table table-hover">
@@ -9,7 +10,7 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-				<% @membership.appointments.each do |appointment| %>
+				<% membership.appointments.each do |appointment| %>
 					<tr>
 						<td>
 							<%= link_to appointment.display_datetime, appointment_path(appointment) %>

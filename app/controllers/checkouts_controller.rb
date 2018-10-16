@@ -9,7 +9,8 @@ class CheckoutsController < ApplicationController
 	def create
 		@checkout = Checkout.new(checkout_params)
 
-		if @checkout.save && @checkout.checkout_items.map(&:save!)
+		@checkout.checkout_items.select {|c_item| c_item.count.nil? }.map(&:destroy)
+		if @checkout.save
 			@checkout.update_attribute(:status, 'completed')
 			@checkout.appointment.update_attribute(:attended, true)
 			render 'show'

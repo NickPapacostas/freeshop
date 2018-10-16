@@ -12,47 +12,49 @@
   <body>
     <header class="navbar">
       Freeshop
-        <div class="account-header">
-          <%= link_to "My Account", edit_volunteer_registration_path %>
-        </div>
+      <div class="flashes">
+        <% flash.each do |key, value| %>
+          <%= content_tag :div, value, class: "flash #{key}" %>
+        <% end %>
+      </div>
 
-<!--       <section class="navbar-section">
-        <a href="#" class="btn btn-link">Appointments</a>
-        <%= link_to "Memberships", memberships_path %>
-        <%= link_to "Members", members_path %>
-        <%= link_to "Checkout", new_checkout_path, class: "btn btn-link" %>
-      </section>
- -->    </header>
+      <div class="account-header">
+        <% if volunteer_signed_in? %>
+          <%= link_to 'Edit account', edit_volunteer_registration_path %>
+          <%= link_to 'Sign out', destroy_volunteer_session_path, :method=>'delete' %>
+        <% else %>
+          <%= link_to 'Sign in', new_volunteer_session_path %>
+          <%= link_to 'Sign up', new_volunteer_registration_path %>
+        <% end %>
+      </div>
+    </header>
 
     <div class="container">
       <div class="columns">
         <div class="column col-1 hide-sm">
-          <ul class="nav">
-            <li class="nav-item">
-             <% if current_volunteer %>
-                <%= nav_link "Dashboard", volunteer_dashboard_path(current_volunteer) %>
-             <% end %>
-            </li>
-            <li class="nav-item">
-              <%= nav_link "Appointments", new_appointment_path %>
-            </li>
-            <li class="nav-item">
-              <%= nav_link "Memberships", memberships_path %>
-            </li>
-            <li class="nav-item">
-              <%= nav_link "Members", members_path %>
-            </li>
-            <li class="nav-item">
-              <a href="#">Admin</a>
-            </li>
-          </ul>
+          <% if current_volunteer %>
+            <ul class="nav">
+              <li class="nav-item">
+                  <%= nav_link "Dashboard", volunteer_dashboard_path(current_volunteer) %>
+              </li>
+              <li class="nav-item">
+                <%= nav_link "Appointments", new_appointment_path %>
+              </li>
+              <li class="nav-item">
+                <%= nav_link "Memberships", memberships_path %>
+              </li>
+              <li class="nav-item">
+                <%= nav_link "Members", members_path %>
+              </li>
+              <li class="nav-item">
+                <a href="#">Admin</a>
+              </li>
+            </ul>
 
+          <% end %>
         </div>
         <div class="divider-vert hide-sm"></div>
-        <div class="col-10 col-sm-12">
-          <% flash.each do |key, value| %>
-            <%= content_tag :div, value, class: "flash #{key}" %>
-          <% end %>
+        <div class="column col-10 col-sm-12">
           <%= yield %>
         </div>
       </div>
