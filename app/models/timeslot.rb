@@ -1,13 +1,14 @@
 class Timeslot
 	attr_accessor :datetime, :max_people
 
-	def initialize(datetime)
+	def initialize(datetime, appointments = [])
 		@datetime = datetime
 		@max_people = 10
+		@appointments = appointments.select { |a| a.datetime == datetime } unless appointments.empty?
 	end
 
 	def appointments
-		Appointment.where(datetime: datetime)
+		@appointments ||= Appointment.where(datetime: datetime)
 	end
 
 	def people_count
