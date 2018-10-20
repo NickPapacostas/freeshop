@@ -295,7 +295,7 @@ body {
 }
 
 a {
-  color: #5755d9;
+  color: #4d9bf8;
   outline: none;
   text-decoration: none;
 }
@@ -313,7 +313,7 @@ a.active {
 }
 
 a:visited {
-  color: #807fe2;
+  color: #2064e1;
 }
 
 h1,
@@ -584,7 +584,7 @@ dl dd {
 .btn:active,
 .btn.active {
   background: #4b48d6;
-  border-color: #3634d2;
+  border-color: #ea6b3b;
   color: #fff;
   text-decoration: none;
 }
@@ -612,7 +612,7 @@ dl dd {
 .btn.btn-primary:focus,
 .btn.btn-primary:hover {
   background: #1fb797;;
-  border-color: #3634d2;
+  border-color: #ea6b3b;
   color: #fff;
 }
 
@@ -689,7 +689,7 @@ dl dd {
 .btn.btn-link {
   background: transparent;
   border-color: transparent;
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .btn.btn-link:focus,
@@ -849,7 +849,7 @@ legend {
 }
 
 .form-input:focus {
-  border-color: #5755d9;
+  border-color: #4d9bf8;
   box-shadow: 0 0 0 .1rem rgba(87, 85, 217, .2);
 }
 
@@ -943,7 +943,7 @@ textarea.form-input {
 }
 
 .form-select:focus {
-  border-color: #5755d9;
+  border-color: #4d9bf8;
   box-shadow: 0 0 0 .1rem rgba(87, 85, 217, .2);
 }
 
@@ -1020,15 +1020,15 @@ textarea.form-input {
 .form-checkbox input:focus + .form-icon,
 .form-radio input:focus + .form-icon,
 .form-switch input:focus + .form-icon {
-  border-color: #5755d9;
+  border-color: #4d9bf8;
   box-shadow: 0 0 0 .1rem rgba(87, 85, 217, .2);
 }
 
 .form-checkbox input:checked + .form-icon,
 .form-radio input:checked + .form-icon,
 .form-switch input:checked + .form-icon {
-  background: #5755d9;
-  border-color: #5755d9;
+  background: #4d9bf8;
+  border-color: #4d9bf8;
 }
 
 .form-checkbox .form-icon,
@@ -1090,8 +1090,8 @@ textarea.form-input {
 }
 
 .form-checkbox input:indeterminate + .form-icon {
-  background: #5755d9;
-  border-color: #5755d9;
+  background: #4d9bf8;
+  border-color: #4d9bf8;
 }
 
 .form-checkbox input:indeterminate + .form-icon::before {
@@ -1364,13 +1364,13 @@ input.disabled + .form-icon {
 }
 
 .label.label-primary {
-  background: #5755d9;
+  background: #4d9bf8;
   color: #fff;
 }
 
 .label.label-secondary {
   background: #f1f1fc;
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .label.label-success {
@@ -2013,7 +2013,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .avatar {
-  background: #5755d9;
+  background: #4d9bf8;
   border-radius: 50%;
   color: rgba(255, 255, 255, .85);
   display: inline-block;
@@ -2109,7 +2109,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .badge[data-badge]::after,
 .badge:not([data-badge])::after {
-  background: #5755d9;
+  background: #4d9bf8;
   background-clip: padding-box;
   border-radius: .5rem;
   box-shadow: 0 0 0 .1rem #fff;
@@ -2195,7 +2195,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .bar .bar-item {
-  background: #5755d9;
+  background: #4d9bf8;
   color: #fff;
   display: block;
   -ms-flex-negative: 0;
@@ -2238,7 +2238,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .bar-slider .bar-slider-btn {
-  background: #5755d9;
+  background: #4d9bf8;
   border: 0;
   border-radius: 50%;
   height: .6rem;
@@ -2251,7 +2251,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .bar-slider .bar-slider-btn:active {
-  box-shadow: 0 0 0 .1rem #5755d9;
+  box-shadow: 0 0 0 .1rem #4d9bf8;
 }
 
 .card {
@@ -2319,7 +2319,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .chip.active {
-  background: #5755d9;
+  background: #4d9bf8;
   color: #fff;
 }
 
@@ -2423,13 +2423,13 @@ summary.accordion-header::-webkit-details-marker {
 .menu .menu-item > a:focus,
 .menu .menu-item > a:hover {
   background: #f1f1fc;
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .menu .menu-item > a:active,
 .menu .menu-item > a.active {
   background: #f1f1fc;
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .menu .menu-item .form-checkbox,
@@ -2558,7 +2558,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .nav .nav-item a:focus,
 .nav .nav-item a:hover {
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .nav .nav-item.active > a {
@@ -2568,7 +2568,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .nav .nav-item.active > a:focus,
 .nav .nav-item.active > a:hover {
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .nav .nav {
@@ -2603,7 +2603,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .pagination .page-item a:focus,
 .pagination .page-item a:hover {
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .pagination .page-item.disabled a {
@@ -2613,7 +2613,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .pagination .page-item.active a {
-  background: #5755d9;
+  background: #4d9bf8;
   color: #fff;
 }
 
@@ -2743,7 +2743,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .step .step-item:not(:first-child)::before {
-  background: #5755d9;
+  background: #4d9bf8;
   content: "";
   height: 2px;
   left: -50%;
@@ -2760,7 +2760,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .step .step-item a::before {
-  background: #5755d9;
+  background: #4d9bf8;
   border: .1rem solid #fff;
   border-radius: 50%;
   content: "";
@@ -2776,7 +2776,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .step .step-item.active a::before {
   background: #fff;
-  border: .1rem solid #5755d9;
+  border: .1rem solid #4d9bf8;
 }
 
 .step .step-item.active ~ .step-item::before {
@@ -2814,13 +2814,13 @@ summary.accordion-header::-webkit-details-marker {
 
 .tab .tab-item a:focus,
 .tab .tab-item a:hover {
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 .tab .tab-item.active a,
 .tab .tab-item a.active {
-  border-bottom-color: #5755d9;
-  color: #5755d9;
+  border-bottom-color: #4d9bf8;
+  color: #4d9bf8;
 }
 
 .tab .tab-item.tab-action {
@@ -2917,7 +2917,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .toast.toast-primary {
   background: rgba(87, 85, 217, .9);
-  border-color: #5755d9;
+  border-color: #4d9bf8;
 }
 
 .toast.toast-success {
@@ -3043,7 +3043,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .text-primary {
-  color: #5755d9;
+  color: #4d9bf8;
 }
 
 a.text-primary:focus,
@@ -3147,7 +3147,7 @@ a.text-error:visited {
 }
 
 .bg-primary {
-  background: #5755d9;
+  background: #4d9bf8;
   color: #fff;
 }
 
@@ -3318,7 +3318,7 @@ a.text-error:visited {
 
 .loading::after {
   animation: loading 500ms infinite linear;
-  border: .1rem solid #5755d9;
+  border: .1rem solid #4d9bf8;
   border-radius: 50%;
   border-right-color: transparent;
   border-top-color: transparent;

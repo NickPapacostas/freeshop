@@ -22,11 +22,19 @@ body {
 	background-color: #fbfbfc;
 }
 
+.hide {
+	display: none;
+}
+
 .navbar {
-    font-size: 2em;
     border-bottom: 1px solid;
     padding: 10px;
     margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.navbar .site-title {
+	font-size: 2em;
 }
 
 .accordions {
@@ -89,7 +97,7 @@ body {
 }
 
 .point_of_contact {
-	color: #3634d2;
+	color: #ea6b3b;
 }
 
 #new_appointment {
@@ -150,10 +158,28 @@ table#memberships-datatable tr {
 }
 
 .dashboard-membersearch {
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 }
 
 .dashboard-divider {
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-bottom: 30px;
+}
+
+.dashboard-buttons {
+	display: flex;
+	justify-content: center;
+}
+
+.dashboard-columns {
+	display: flex;
+	justify-content: center;
+}
+
+.tab-block {
+	margin-bottom: 20px;
+}
+
+.membership-title {
+	text-align: center;
 }
