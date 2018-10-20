@@ -1,5 +1,5 @@
 $ ->
-  $('#members-datatable').dataTable
+  table_options =
     columnDefs: [
       {className: "text-center", "targets": "_all"}
     ],
@@ -18,3 +18,10 @@ $ ->
       {data: 'email'}
       {data: 'document_number'}
     ]
+
+  if $('#members-datatable').hasClass('paging')
+    table_options.lengthChange = true
+    table_options.info = true
+    table_options.pageLength = 50
+
+  $('#members-datatable').dataTable table_options

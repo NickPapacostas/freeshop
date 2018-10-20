@@ -43,13 +43,12 @@
 					</div>
 
 					<%= member_form.remove_nested_fields_link 'Remove', data: { confirm: 'Are you sure?' }, class: "form-label cancel" %>
-
 				</div>
 			</div>
 		<% end %>
 	</div>
-		<div class="">
-			<%= f.add_nested_fields_link :members, "Add member", class: 'btn btn-primary add-member' %>
-			<%= f.submit "Save", class: 'btn btn-primary' %>
-		</div>
+	<div class="">
+		<%= f.add_nested_fields_link :members, "Add member", class: 'btn btn-primary add-member' %>
+		<%= f.submit "Save", class: 'btn btn-primary' %>
+	</div>
 <% end %>
