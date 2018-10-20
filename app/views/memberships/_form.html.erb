@@ -1,60 +1,55 @@
 <%= form_for @membership do |f| %>
-<div>
 	<div class="grid-container">
 		<%= f.nested_fields_for :members do |member_form| %>
-		<div class="grid-item">
-			<div class="form-group">
+			<div class="grid-item">
+				<div class="form-group">
 
-				<div class="point_of_contact d-invisible">Point of Contact</div>
+					<div class="point_of_contact d-invisible">Point of Contact</div>
 
-				<div>
-					<%= member_form.label "First name:", class: "form-label" %>
-					<%= member_form.text_field :first_name, class: "form-input" %>
+					<div>
+						<%= member_form.label "First name:", class: "form-label" %>
+						<%= member_form.text_field :first_name, class: "form-input" %>
+					</div>
+
+					<div>
+						<%= member_form.label "Last name:", class: "form-label" %>
+						<%= member_form.text_field :last_name, class: "form-input" %>
+					</div>
+
+					<div>
+						<%= member_form.label "Birth year:", class: "form-label" %>
+						<%= member_form.number_field :birth_year, class: "form-input" %>
+						<div class="member-age"></div>
+					</div>
+
+					<div>
+						<%= member_form.label "Phone number:", class: "form-label" %>
+						<%= member_form.text_field :phone_number, class: "form-input" %>
+					</div>
+
+					<div>
+						<%= member_form.label "Email:", class: "form-label" %>
+						<%= member_form.text_field :email, class: "form-input", type: 'email' %>
+					</div>
+
+					<div>
+						<%= member_form.label "Document number:", class: "form-label" %>
+						<%= member_form.text_field :document_number, class: "form-input" %>
+					</div>
+
+					<div>
+						<%= member_form.label "Notes:", class: "form-label" %>
+						<%= member_form.text_area :notes, class: "form-input" %>
+					</div>
+
+					<%= member_form.remove_nested_fields_link 'Remove', data: { confirm: 'Are you sure?' }, class: "form-label cancel" %>
+
 				</div>
-
-				<div>
-					<%= member_form.label "Last name:", class: "form-label" %>
-					<%= member_form.text_field :last_name, class: "form-input" %>
-				</div>
-
-				<div>
-					<%= member_form.label "Birth year:", class: "form-label" %>
-					<%= member_form.number_field :birth_year, class: "form-input" %>
-					<div class="member-age"></div>
-				</div>
-
-				<div>
-					<%= member_form.label "Phone number:", class: "form-label" %>
-					<%= member_form.text_field :phone_number, class: "form-input" %>
-				</div>
-
-				<div>
-					<%= member_form.label "Email:", class: "form-label" %>
-					<%= member_form.text_field :email, class: "form-input", type: 'email' %>
-				</div>
-
-				<div>
-					<%= member_form.label "Document number:", class: "form-label" %>
-					<%= member_form.text_field :document_number, class: "form-input" %>
-				</div>
-
-				<div>
-					<%= member_form.label "Notes:", class: "form-label" %>
-					<%= member_form.text_area :notes, class: "form-input" %>
-				</div>
-
-				<%= member_form.remove_nested_fields_link 'Remove', data: { confirm: 'Are you sure?' }, class: "form-label cancel" %>
-
-				<div class="divider"></div>
-
-				<% end %>
 			</div>
-		</div>
-		<div class="grid-item">
-			<%= f.add_nested_fields_link :members, "Add member", class: 'btn 	btn-primary add-member' %>
+		<% end %>
+	</div>
+		<div class="">
+			<%= f.add_nested_fields_link :members, "Add member", class: 'btn btn-primary add-member' %>
 			<%= f.submit "Save", class: 'btn btn-primary' %>
 		</div>
-		</div>
-	</div>
-<div>
 <% end %>

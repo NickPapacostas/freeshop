@@ -1,32 +1,72 @@
 <% membership ||= @membership %>
-<div class='appointments-header h4'>Appointment history</div>
-<ul class='membership-appointments'>
-	<div>
-	  <table id="appointments-table" class="table table-hover">
-	    <thead>
-	      <tr>
-	        <th>Date & Time</th>
-	        <th>Items</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-				<% membership.appointments.each do |appointment| %>
-					<tr>
-						<td>
-							<%= link_to appointment.display_datetime, appointment_path(appointment) %>
-						</td>
-						<td>
-							<% if appointment.checkout %>
-								<ul>
-									<% appointment.checkout.checkout_items.each do |checkout_item| %>
+<div class="container">
+	<div class="columns">
+		<div class="column col-5">
+			<div class='appointments-header h4'>Appointment history</div>
+			<ul class='membership-appointments'>
+				<div>
+					<table id="appointments-table" class="table table-hover">
+						<thead>
+							<tr>
+								<th>Date & Time</th>
+								<th>Items</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% membership.completed_appointments.each do |appointment| %>
+							<tr>
+								<td>
+									<%= link_to appointment.datetime.localtime.strftime("%m/%d/%Y, %a: %H:%M"), appointment_path(appointment) %>
+								</td>
+								<td>
+									<% if appointment.checkout %>
+									<ul>
+										<% appointment.checkout.checkout_items.each do |checkout_item| %>
 										<li><%= checkout_item.item.display_name %> <%= checkout_item.count %> </li>
+										<% end %>
+									</ul>
 									<% end %>
-								</ul>
+								</td>
+							</tr>
 							<% end %>
-						</td>
-					</tr>
-				<% end %>
-	    </tbody>
-	  </table>
+						</tbody>
+					</table>
+				</div>
+			</ul>
+		</div>
+		<div class="divider-vert"></div>
+		<div class="column col-5">
+			<div class='appointments-header h4'>Upcoming Appointments</div>
+			<ul class='membership-appointments'>
+				<div>
+					<table id="appointments-table" class="table table-hover">
+						<thead>
+							<tr>
+								<th>Date & Time</th>
+								<th>Items</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% membership.upcoming_appointments.each do |appointment| %>
+							<tr>
+								<td>
+									<%= link_to appointment.datetime.localtime.strftime("%m/%d/%Y, %a: %H:%M"), appointment_path(appointment) %>
+								</td>
+								<td>
+									<% if appointment.checkout %>
+									<ul>
+										<% appointment.checkout.checkout_items.each do |checkout_item| %>
+										<li><%= checkout_item.item.display_name %> <%= checkout_item.count %> </li>
+										<% end %>
+									</ul>
+									<% end %>
+								</td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</ul>
+		</div>
 	</div>
-</ul>
+</div>

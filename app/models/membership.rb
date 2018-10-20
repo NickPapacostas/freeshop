@@ -14,6 +14,10 @@ class Membership < ApplicationRecord
 		appointments.where(attended: true)
 	end
 
+	def upcoming_appointments
+		appointments.where(attended: false).where('datetime > ?', DateTime.now)
+	end
+
 	def point_of_contact
 		members.find { |m| m.id == point_of_contact_id }
 	end

@@ -53,7 +53,7 @@ class Appointment < ApplicationRecord
 	end
 
 	def display_datetime
-		datetime.localtime.strftime("%B %d, %Y, %A: %H:%M")
+		datetime.localtime.strftime("%B %d, %A: %H:%M")
 	end
 
 	def start_time
