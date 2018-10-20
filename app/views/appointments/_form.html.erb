@@ -6,10 +6,9 @@
 	</div>
 
 	<div class="modal modal-lg" id="timeslot_modal">
-		<a href="#close" class="modal-overlay blue-background" aria-label="Close"></a>
 		<div class="modal-container">
 			<div class="modal-header">
-				<a href="#close" class="membership_close btn btn-clear float-right" aria-label="Close"></a>
+				<a href="#close" class="appointment_close btn btn-clear float-right" aria-label="Close"></a>
 				<div id="current-timeslot" class="modal-title h5"></div>
 			</div>
 			<div class="modal-body">
@@ -56,8 +55,9 @@
 										<%= f.label "Number of People", class: 'form-label' %>
 										<%= f.number_field :people_count, class: 'form-input' %>
 
-										<%= f.label "Date and Time", class: 'form-label' %>
-										<%= f.datetime_local_field :datetime, class: 'form-input' %>
+										<%= f.label "Date", class: 'form-label' %>
+										<div class="appointment_form_datetime"></div>
+										<%= f.hidden_field :datetime %>
 										<%= f.submit "Create appointment", { id: 'create_appointment', class: 'btn btn-primary'} %>
 									<% end %>
 								</div>

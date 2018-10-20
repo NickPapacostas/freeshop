@@ -34,7 +34,8 @@ $(document).ready(function() {
 	  eventClick: function(calEvent, jsEvent, view) {
 	  	$('#timeslot_modal').addClass('active')
 	  	$('#current-timeslot').text(calEvent.start.format('ddd D MMM YY - H:mm'))
-	  	$('#appointment_datetime').val(calEvent.start.toString())
+	  	$('.appointment_form_datetime').text(calEvent.start.format('ddd D MMM YY - H:mm'))
+	  	document.getElementById('appointment_datetime').value = calEvent.start.toString()
 	    $('#timeslot-appointments-table > tbody > tr').remove();
 
 	    $.ajax({
