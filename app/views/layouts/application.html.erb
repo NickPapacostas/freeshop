@@ -11,22 +11,30 @@
 
   <body>
     <header class="navbar">
-      Freeshop
-      <div class="flashes">
-        <% flash.each do |key, value| %>
-          <%= content_tag :div, value, class: "flash #{key}" %>
-        <% end %>
+      <div class="navbar-section">
+        Freeshop
       </div>
 
-      <div class="account-header">
-        <% if volunteer_signed_in? %>
-          <%= link_to 'Edit account', edit_volunteer_registration_path %>
-          <%= link_to 'Sign out', destroy_volunteer_session_path, :method=>'delete' %>
-        <% else %>
-          <%= link_to 'Sign in', new_volunteer_session_path %>
-          <%= link_to 'Sign up', new_volunteer_registration_path %>
-        <% end %>
+      <div class="navbar-section">
+        <div class="flashes">
+          <% flash.each do |key, value| %>
+            <%= content_tag :div, value, class: "flash #{key}" %>
+          <% end %>
+        </div>
       </div>
+
+      <div class="navbar-section">
+        <div class="account-header">
+          <% if volunteer_signed_in? %>
+            <%= link_to 'Edit account', edit_volunteer_registration_path %>
+            <%= link_to 'Sign out', destroy_volunteer_session_path, :method=>'delete' %>
+          <% else %>
+            <%= link_to 'Sign in', new_volunteer_session_path %>
+            <%= link_to 'Sign up', new_volunteer_registration_path %>
+          <% end %>
+        </div>
+      </div>
+
     </header>
 
     <div class="container">
@@ -50,14 +58,12 @@
 
           <% end %>
         </div>
-        <div class="divider-vert hide-sm"></div>
+        <div class="divider-vert"></div>
         <div class="column col-10 col-sm-12">
           <%= yield %>
         </div>
       </div>
-
     </div>
-
 
   </body>
 </html>

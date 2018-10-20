@@ -8,6 +8,9 @@ $ ->
   $('#membership_modal .membership_close').on('click', ->
     $('#membership_modal').removeClass('active'))
 
+  $('#timeslot_modal .appointment_close').on('click', ->
+    $('#timeslot_modal').removeClass('active'))
+
   $('#timeslot_modal .membership_close').on('click', ->
     $('#timeslot_modal').removeClass('active'))
 

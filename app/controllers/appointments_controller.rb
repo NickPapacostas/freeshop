@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
 		if @appointment.save
 			flash.now[:success] = 'created appointment'
 			@appointment = Appointment.new
-			render 'new'
+			redirect_to new_appointment_path
 		else
 			flash.now[:error] = 'didnt save appointment'
 			redirect_to new_appointment_path
