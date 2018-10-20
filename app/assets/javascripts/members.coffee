@@ -8,7 +8,7 @@ $ ->
     ajax: $('#members-datatable').data('source')
     pagingType: 'full_numbers'
     columns: [
-      {data: 'id'}
+      {data: 'membership_id'}
       {data: 'first_name'}
       {data: 'last_name'}
       {data: 'phone'}

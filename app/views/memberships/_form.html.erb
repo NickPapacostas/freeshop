@@ -18,6 +18,12 @@
 				</div>
 
 				<div>
+					<%= member_form.label "Birth year:", class: "form-label" %>
+					<%= member_form.number_field :birth_year, class: "form-input" %>
+					<div class="member-age"></div>
+				</div>
+
+				<div>
 					<%= member_form.label "Phone number:", class: "form-label" %>
 					<%= member_form.text_field :phone_number, class: "form-input" %>
 				</div>

@@ -43,7 +43,7 @@ class MembershipsController < ApplicationController
 	private
 
 	def membership_params
-		params.require(:membership).permit(members_attributes: [:id, :_destroy, :first_name, :last_name,
+		params.require(:membership).permit(members_attributes: [:id, :_destroy, :first_name, :last_name, :birth_year,
 				:phone_number, :email, :document_number, :notes])
 	end
 end

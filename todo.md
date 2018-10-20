@@ -7,7 +7,8 @@ Todo:
 		- add point of contact check box
 - [x] create appointments
 - [x] view appointments (appointment history)
-- [ ] flash_messages
+- [x] flash_messages
 - [x] delete members
-- [ ] account stuff >.< (avatar, update info etc)
+- [x] account stuff >.< (avatar, update info etc)
 - [ ] form validation
+- [ ] chrome datetime wwtttffff
