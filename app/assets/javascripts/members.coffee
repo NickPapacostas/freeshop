@@ -3,6 +3,9 @@ $ ->
     columnDefs: [
       {className: "text-center", "targets": "_all"}
     ],
+    info: false
+    pageLength: 20
+    lengthChange: false
     processing: true
     serverSide: true
     ajax: $('#members-datatable').data('source')

@@ -148,3 +148,12 @@ table#memberships-datatable tr {
 .flash.error {
 	color: red;
 }
+
+.dashboard-membersearch {
+	margin-top: 50px;
+}
+
+.dashboard-divider {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}

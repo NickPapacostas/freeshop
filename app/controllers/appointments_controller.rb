@@ -7,11 +7,11 @@ class AppointmentsController < ApplicationController
 		@appointment = Appointment.new(appointment_params)
 
 		if @appointment.save
-			flash[:success] = 'created appointment'
+			flash.now[:success] = 'created appointment'
 			@appointment = Appointment.new
 			render 'new'
 		else
-			flash[:error] = 'didnt save appointment'
+			flash.now[:error] = 'didnt save appointment'
 			redirect_to new_appointment_path
 		end
 	end
@@ -19,7 +19,7 @@ class AppointmentsController < ApplicationController
 	def destroy
 		@appointment = Appointment.find(params[:id])
 		if @appointment.destroy!
-			flash[:success] = "appointment cancelled"
+			flash.now[:success] = "appointment cancelled"
 			redirect_to new_appointment_path
 		end
 	end

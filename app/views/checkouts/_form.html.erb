@@ -8,7 +8,7 @@
 
 		<%= checkout_items_form.collection_select(:item_id, @items, :id, :display_name, {}, class: 'chosen-select') %>
 
-		<%= checkout_items_form.number_field :count, placeholder: "Count" %>
+		<%= checkout_items_form.number_field :count, value: 1 %>
 
 		<%= checkout_items_form.remove_nested_fields_link 'x' %>
 	<% end %>

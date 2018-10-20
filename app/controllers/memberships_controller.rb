@@ -31,10 +31,10 @@ class MembershipsController < ApplicationController
 		if @membership.update(membership_params)
 			@membership.update_attribute(:point_of_contact_id, @membership.members.first.id)
 
-			flash[:success] = 'Membership updated'
+			flash.now[:success] = 'Membership updated'
 			render 'show'
 		else
-			flash[:error] = 'Membership not updated'
+			flash.now[:error] = 'Membership not updated'
 			render 'show'
 		end
 
