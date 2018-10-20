@@ -12,12 +12,13 @@
 
 		<%= checkout_items_form.remove_nested_fields_link 'x' %>
 	<% end %>
-	<div class="divider"></div>
 	<div class="checkout-buttons">
 		<%= f.add_nested_fields_link :checkout_items, "+", class: 'add-item btn btn-primary'  %>
 		<%= f.submit "Finished Checking out", class: "btn btn-primary checkout-submit" %>
 	</div>
 <% end %>
+
+<div class="divider"></div>
 
 <% unless @appointment.membership.completed_appointments.empty? %>
 	<div class="appointment-history">

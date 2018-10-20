@@ -21,6 +21,7 @@ class CheckoutsController < ApplicationController
 			if @checkout.save
 				@checkout.update_attribute(:status, 'completed')
 				@checkout.appointment.update_attribute(:attended, true)
+				flash.now[:success] = "Checkout completed"
 				render 'show'
 			else
 				render 'new', checkout: @checkout
