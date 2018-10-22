@@ -24,6 +24,10 @@
       </div>
 
       <div class="navbar-section">
+        <div id="calendar-loader" class="loading hide"></div>
+      </div>
+
+      <div class="navbar-section">
         <div class="account-header">
           <% if volunteer_signed_in? %>
             <%= link_to 'Edit account', edit_volunteer_registration_path %>

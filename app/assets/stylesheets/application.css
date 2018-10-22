@@ -183,3 +183,8 @@ table#memberships-datatable tr {
 .membership-title {
 	text-align: center;
 }
+
+.member-age {
+	color: #4d9bf8;
+	margin-bottom: 15px;
+}

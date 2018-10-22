@@ -6,6 +6,7 @@ class MembershipsController < ApplicationController
 
 	def create
 		@membership = Membership.new(membership_params)
+		@membership.number = Membership.next_membership_number
 		if @membership.save && @membership.members.map(&:save)
 			@membership.update_attribute(:point_of_contact, @membership.members.first)
 			flash.now[:success] = 'Membership created'

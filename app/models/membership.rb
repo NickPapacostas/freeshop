@@ -6,6 +6,10 @@ class Membership < ApplicationRecord
 
 	accepts_nested_attributes_for :members, allow_destroy: true
 
+	def self.next_membership_number
+		Membership.order(:number).last.number +  1
+	end
+
 	def name
 		point_of_contact.full_name
 	end
@@ -21,4 +25,6 @@ class Membership < ApplicationRecord
 	def point_of_contact
 		members.find { |m| m.id == point_of_contact_id }
 	end
+
+
 end

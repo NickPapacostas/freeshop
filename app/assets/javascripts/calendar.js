@@ -8,6 +8,7 @@ $(document).ready(function() {
 			return '#39A778'
 		}
 	}
+	if ($('#calendar').length) $('#calendar-loader').removeClass('hide')
 	$('#calendar').fullCalendar({
 		defaultView: 'month',
 	  events: function(start, end, timezone, callback) {
@@ -19,6 +20,7 @@ $(document).ready(function() {
 	      url: '/appointments/by_month?month=' + month + '&year=' + year,
 	      dataType: 'json',
 	      success: function(timeslots) {
+	      	$('#calendar-loader').addClass('hide')
 	        callback(timeslots.map(function(timeslot) {
 	        	var backgroundColor = colorForPeopleCount(timeslot.people_count, timeslot.full)
 	        	var title = timeslot.people_count == "0" ? "None" : timeslot.people_count
@@ -33,8 +35,8 @@ $(document).ready(function() {
 	  },
 	  eventClick: function(calEvent, jsEvent, view) {
 	  	$('#timeslot_modal').addClass('active')
-	  	$('#current-timeslot').text(calEvent.start.format('ddd D MMM YY - H:mm'))
-	  	$('.appointment_form_datetime').text(calEvent.start.format('ddd D MMM YY - H:mm'))
+	  	$('#current-timeslot').text(calEvent.start.format('ddd D MMM - H:mm'))
+	  	$('.appointment_form_datetime').text(calEvent.start.format('ddd D MMM - H:mm'))
 	  	document.getElementById('appointment_datetime').value = calEvent.start.toString()
 	    $('#timeslot-appointments-table > tbody > tr').remove();
 

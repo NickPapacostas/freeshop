@@ -2,7 +2,7 @@ class MemberDatatable < ApplicationDatatable
 
   def view_columns
     @view_columns ||= {
-      membership_id:         { source: "Membership.id" },
+      membership_id:         { source: "Membership.number" },
       first_name: { source: "Member.first_name", cond: :like, searchable: true, orderable: true },
       last_name:  { source: "Member.last_name",  cond: :like },
       email:      { source: "Member.email" },
@@ -17,7 +17,7 @@ class MemberDatatable < ApplicationDatatable
     records.map do |record|
       {
         # example:
-        membership_id: record.membership.id,
+        membership_id: record.membership.number,
         first_name: link_to(record.first_name, membership_path(record.membership)),
         last_name: link_to(record.last_name, membership_path(record.membership)),
         email: record.email,

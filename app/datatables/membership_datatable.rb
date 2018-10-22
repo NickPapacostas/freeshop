@@ -2,7 +2,7 @@ class MembershipDatatable < ApplicationDatatable
 
   def view_columns
     @view_columns ||= {
-      id:         { source: "Membership.id" },
+      id:         { source: "Membership.number" },
       first_name: { source: "Member.first_name", cond: :like, searchable: true, orderable: true },
       last_name:  { source: "Member.last_name",  cond: :like },
       email:      { source: "Member.email" }
@@ -26,7 +26,7 @@ class MembershipDatatable < ApplicationDatatable
 
       {
         # example:
-        id: id,
+        id: record.number,
         first_name: first_name,
         last_name: last_name,
         email: record.point_of_contact.email

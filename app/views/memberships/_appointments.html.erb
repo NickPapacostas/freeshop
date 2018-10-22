@@ -43,7 +43,6 @@
 						<thead>
 							<tr>
 								<th>Date & Time</th>
-								<th>Items</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,15 +50,6 @@
 							<tr>
 								<td>
 									<%= link_to appointment.datetime.localtime.strftime("%m/%d/%Y, %a: %H:%M"), appointment_path(appointment) %>
-								</td>
-								<td>
-									<% if appointment.checkout %>
-									<ul>
-										<% appointment.checkout.checkout_items.each do |checkout_item| %>
-										<li><%= checkout_item.item.display_name %> <%= checkout_item.count %> </li>
-										<% end %>
-									</ul>
-									<% end %>
 								</td>
 							</tr>
 							<% end %>

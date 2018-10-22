@@ -19,7 +19,9 @@
 					<div>
 						<%= member_form.label "Birth year:", class: "form-label" %>
 						<%= member_form.number_field :birth_year, class: "form-input" %>
-						<div class="member-age"></div>
+						<% if member_form.object.birth_year %>
+							<div class="member-age"><%= member_form.object.age %> years old </div>
+						<% end %>
 					</div>
 
 					<div>
