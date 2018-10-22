@@ -17,8 +17,9 @@ $ ->
   $('.membership_search').on('click', ->
     $('#membership_modal').addClass('active')
     $('#membership_modal #memberships-datatable tr').on('click', ->
-      membershipId = $(this).find('div.membership-id').data('id')
-      $('#appointment_membership_id').val(membershipId)
+      console.log(this)
+      membershipNumber = $(this).find('div.membership-id').data('number')
+      $('#appointment_membership_id').val(membershipNumber)
       $('#membership_modal').removeClass('active') ))
 
 $(document).on "fields_added.nested_form_fields", (event, param) ->

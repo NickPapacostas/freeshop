@@ -85,8 +85,9 @@ $(document).ready(function() {
 	      success: function(timeslots) {
 	        callback(timeslots.map(function(timeslot) {
 	        	var backgroundColor = colorForPeopleCount(timeslot.people_count, timeslot.full)
-	        	var title = timeslot.appointments.map(function(a) { return a.name }).join(" ")
-	        	if (!title.length) {
+	        	var title;
+	        	if (timeslot.people_count > 0) title = "Attending: " + timeslot.people_count
+	        	if (!title) {
 	        		title = "No appointments"
 	        	}
             return {

@@ -1,6 +1,5 @@
 
 ready = ->
-  console.log('tablin!')
   $('#memberships-datatable').dataTable
     columnDefs: [
       {className: "text-center", "targets": "_all"}
@@ -10,7 +9,7 @@ ready = ->
     ajax: $('#memberships-datatable').data('source')
     pagingType: 'full_numbers'
     columns: [
-      {data: 'id'}
+      {data: 'number'}
       {data: 'first_name'}
       {data: 'last_name'}
       {data: 'email'}
