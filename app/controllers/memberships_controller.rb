@@ -8,7 +8,7 @@ class MembershipsController < ApplicationController
 		@membership = Membership.new(membership_params)
 		@membership.number = Membership.next_membership_number
 		if @membership.save && @membership.members.map(&:save)
-			@membership.update_attribute(:point_of_contact, @membership.members.first)
+			@membership.update_attribute(:point_of_contact_id, @membership.members.first.id)
 			flash.now[:success] = 'Membership created'
 
 			redirect_to membership_path(@membership)
