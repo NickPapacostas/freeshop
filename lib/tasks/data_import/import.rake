@@ -43,6 +43,7 @@ task :import_members => :environment do
 				if name
 					name = name.strip
 					first_name, nothing, last_name = name.rpartition(' ')
+					first_name = last_name if first_name.nil? && !last_name.nil?
 				else
 					raise "no name for row: #{ix + 1} in sheet #{current_sheet.name}: #{line}"
 				end
