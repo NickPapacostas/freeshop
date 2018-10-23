@@ -7,9 +7,10 @@ class AppointmentsController < ApplicationController
 		@appointment = Appointment.new(appointment_params)
 
 		# so that the form can still be generated with "membership_id"
-		@appointment.membership_id = Membership.find_by(number: params[:membership_id])
+		@appointment.membership_id = Membership.find_by(number: appointment_params[:membership_id]).id
+
 		if @appointment.save
-			flash.now[:success] = 'created appointment'
+			flash[:success] = 'created appointment'
 			@appointment = Appointment.new
 			redirect_to new_appointment_path
 		else

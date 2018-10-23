@@ -4,6 +4,8 @@ class Membership < ApplicationRecord
 
 	has_one :point_of_contact, class_name: 'Member'
 
+	after_create :insure_point_of_contact
+
 	accepts_nested_attributes_for :members, allow_destroy: true
 
 	def self.next_membership_number
@@ -24,6 +26,10 @@ class Membership < ApplicationRecord
 
 	def point_of_contact
 		members.find { |m| m.id == point_of_contact_id }
+	end
+
+	def insure_point_of_contact
+		self.point_of_contact_id = members.first.id if point_of_contact_id.nil?
 	end
 
 

@@ -40,10 +40,10 @@ class Appointment < ApplicationRecord
 		# could use sql query  appointment group by datetime for timeslots
 		appointments ||= where(datetime: date.beginning_of_day..date.end_of_day)
 		timeslots = []
-		start_time = date.to_time + 9.hours + appointment_length
+		start_time = date.to_time + 11.hours
 		timeslots << Timeslot.new(start_time)
 		next_timeslot =  start_time + appointment_length
-		while next_timeslot < date.to_time + 17.hours
+		while next_timeslot < date.to_time + 16.hours
 			timeslots << Timeslot.new(next_timeslot, appointments)
 			next_timeslot += appointment_length
 		end

@@ -13,7 +13,9 @@ class MembershipsController < ApplicationController
 
 			redirect_to membership_path(@membership)
 		else
-			redirect_to new_membership_path
+			flash[:error] = "Failed to create membership: "
+			flash[:error] += @membership.errors.full_messages.join(", ")
+			render 'new'
 		end
 	end
 
