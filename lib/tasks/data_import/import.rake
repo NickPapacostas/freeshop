@@ -13,7 +13,7 @@ task :import_members => :environment do
 	# 	members_book = Spreadsheet.open 'lib/tasks/data_import/membership_list.xls'
 	# end
 
-	members_book = Spreadsheet.open 'lib/tasks/data_import/membership_list.xls'
+	members_book = Spreadsheet.open './lib/tasks/data_import/membership_list.xls'
 
 	# get sheets with names like "1-99", "1000-1099"
 	relevant_sheets = members_book.worksheets.select { |sheet| sheet.name.match(/\d+-\d+/) || sheet.name.match(/\d+_\d+/) }
