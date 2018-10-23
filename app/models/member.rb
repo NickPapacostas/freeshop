@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
-	belongs_to :membership, dependent: :destroy
+	belongs_to :membership
 
-	validates_presence_of :first_name, :last_name
+	validates_presence_of :first_name
 
 	def age
 		Date.today.year - birth_year

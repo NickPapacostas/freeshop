@@ -17,7 +17,7 @@ class MemberDatatable < ApplicationDatatable
     records.map do |record|
       {
         # example:
-        membership_id: record.membership.number,
+        membership_id: link_to(record.membership.number, membership_path(record.membership)),
         first_name: link_to(record.first_name, membership_path(record.membership)),
         last_name: link_to(record.last_name, membership_path(record.membership)),
         email: record.email,

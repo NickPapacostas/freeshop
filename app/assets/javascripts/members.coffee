@@ -22,6 +22,6 @@ $ ->
   if $('#members-datatable').hasClass('paging')
     table_options.lengthChange = true
     table_options.info = true
-    table_options.pageLength = 50
+    table_options.pageLength = 25
 
   $('#members-datatable').dataTable table_options

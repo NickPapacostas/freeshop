@@ -1,4 +1,5 @@
 <div>
+  <%= link_to("Create a membership", new_membership_path, class: 'btn btn-primary') %>
   <table id="members-datatable" data-source="<%= members_path(format: :json)%>" class="paging table table-striped table-hover cell-border compact">
     <thead>
       <tr>
@@ -13,6 +14,5 @@
     <tbody>
     </tbody>
   </table>
-  <%= link_to("Create a membership", new_membership_path, class: 'btn btn-primary') %>
 
 </div>
