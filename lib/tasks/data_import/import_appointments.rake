@@ -21,12 +21,13 @@ task :import_appointments => :environment do
 					datetime = DateTime.parse(current_sheet.name + " #{start}")
 
 					# daylight savings ^__________^
-					if datetime > Date.new(2018, 10, 28)
-						datetime -= 2.hours
-					else
-						datetime -= 3.hours
+					if Rails.env == "development"
+						if datetime > Date.new(2018, 10, 28)
+							datetime -= 2.hours
+						else
+							datetime -= 3.hours
+						end
 					end
-
 					current_timeslot =  datetime
 					puts "start time: #{current_timeslot}"
 				end
