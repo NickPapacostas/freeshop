@@ -11,6 +11,10 @@
 				</div>
 
 				<div>
+					Notes: <%= @appointment.notes %>
+				</div>
+
+				<div>
 					Checkout status: <%= @appointment.checkout.nil? ? "Incomplete" : @appointment.checkout.status %>
 				</div>
 

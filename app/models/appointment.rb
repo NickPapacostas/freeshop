@@ -3,6 +3,7 @@ class Appointment < ApplicationRecord
 	has_one :checkout
 
 	validates_presence_of :datetime
+	validates_uniqueness_of :datetime, scope: [:membership_id]
 
 	# after_create :create_checkout
 
@@ -20,12 +21,16 @@ class Appointment < ApplicationRecord
 		where(datetime: Date.today.beginning_of_month..Date.today.end_of_month)
 	end
 
+
 	def self.for_month(month = Date.today.month, year = Time.current.year)
-		appointments = self.this_month
-		timeslots = []
 		first_day = Date.new(year, month)
+		appointments = where(datetime: first_day.beginning_of_month..first_day.end_of_month)
+		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
-			timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
+			day = first_day + day_in_month.days
+			if [:wednesday?, :thursday?, :friday?, :saturday?].map {|check_method| day.send(check_method)}.any?
+				timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
+			end
 		end
 		timeslots.flatten
 	end
@@ -79,7 +84,8 @@ class Appointment < ApplicationRecord
 			people_count: people_count,
 			checkout_link: checkout_link,
 			destroy_link: destroy_link,
-			show_link: show_link
+			show_link: show_link,
+			notes: notes
 		}
 	end
 
