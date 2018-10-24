@@ -11,6 +11,13 @@ $(document).ready(function() {
 	if ($('#calendar').length) $('#calendar-loader').removeClass('hide')
 	$('#calendar').fullCalendar({
 		defaultView: 'month',
+		businessHours: {
+		  // days of week. an array of zero-based day of week integers (0=Sunday)
+		  dow: [ 4, 5, 6 ], // Monday - Thursday
+
+		  start: '9:30', // a start time (10am in this example)
+		  end: '17:00', // an end time (6pm in this example)
+		},
 	  events: function(start, end, timezone, callback) {
 	  	var month = moment().month(start.month() + 1).format("M");
 	  	var year  = start.year();
@@ -57,7 +64,6 @@ $(document).ready(function() {
         		rowHTML += '<td><a href="' + appointment.show_link + '" class="btn btn-primary"> view </a>'
 	        	if (appointment.checkout_link) {
 	        		rowHTML += '<a href="' + appointment.checkout_link + '" class="btn"> checkout </a>'
-	        		rowHTML += '<a href="' + appointment.destroy_link + '" class="btn btn-error"> cancel </a></td>'
 	        	}
 	        	rowHTML += '</td'
 
