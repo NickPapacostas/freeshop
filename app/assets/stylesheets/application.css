@@ -92,6 +92,10 @@ body {
 	display: inline-block;
 }
 
+.checkout-notes {
+	color: #ef5d60;
+}
+
 .new_checkout {
 	text-align: center;
 }

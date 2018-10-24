@@ -10,5 +10,6 @@ Todo:
 - [x] flash_messages
 - [x] delete members
 - [x] account stuff >.< (avatar, update info etc)
-- [ ] form validation
-- [ ] chrome datetime wwtttffff
+- [x] form validation
+- [x] chrome datetime wwtttffff
+- [ ] fix member import to get all memberships
