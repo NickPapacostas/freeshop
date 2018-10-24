@@ -75,12 +75,11 @@ task :import_members => :environment do
 					puts "created member #{member.full_name} for membership #{membership.number}"
 				end
 			rescue => e
-			# binding.pry if e.message.match("undefined method")
-			unless e.message.match("name can't be blank")
-				errors << "#{e} : #{line}"
-				puts e
+				unless e.message.match("name can't be blank")
+					errors << "#{e} : #{line}"
+					puts e
+				end
 			end
-		end
 	end
 	Membership.all.each do |m|
 		if m.members.first

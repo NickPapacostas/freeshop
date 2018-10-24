@@ -1,7 +1,6 @@
 require 'rake'
 require 'spreadsheet'
 require 'open-uri'
-require 'pry'
 
 task :import_appointments => :environment do
 	errors = []
@@ -45,7 +44,6 @@ task :import_appointments => :environment do
 						membership_id: membership.id,
 						notes: notes)
 
-					# binding.pry
 					puts "created appointment for membership #{membership.number} at #{current_timeslot} "
 				else
 					raise "couldn't find membership_number #{membership_number} : #{line}"
