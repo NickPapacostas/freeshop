@@ -20,8 +20,8 @@ class Membership < ApplicationRecord
 		point_of_contact.full_name
 	end
 
-	def completed_appointments
-		appointments.where(attended: true)
+	def past_appointments
+		appointments.where('datetime < ?', DateTime.now)
 	end
 
 	def upcoming_appointments

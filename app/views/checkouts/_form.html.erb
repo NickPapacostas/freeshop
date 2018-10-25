@@ -1,5 +1,5 @@
 <%= form_for @checkout do |f| %>
-	<div class="title">Checking out membership #<%= @appointment.membership.number %></div>
+	<div class="title">Checking out Membership <%= link_to "##{@appointment.membership.number}", membership_path(@appointment.membership) %></div>
 	<div class="title"><%= @appointment.display_datetime %></div>
 	<% if @appointment.notes %>
 		<div>
@@ -28,7 +28,7 @@
 
 <div class="divider"></div>
 
-<% unless @appointment.membership.completed_appointments.empty? %>
+<% unless @appointment.membership.past_appointments.empty? %>
 	<div class="appointment-history">
 		<%= render partial: 'memberships/appointments', locals: {membership: @appointment.membership} %>
 	</div>

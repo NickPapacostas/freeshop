@@ -116,7 +116,7 @@ class MemberImporter
 
 	def find_relevant_sheets(worksheets = [])
 		return [] if worksheets.empty?
-		number_range_pattern = /(\d+_\d+|\d+-\d+)/ # e.g. "1-99", "1000-1999"
+		number_range_pattern = /(\d+.+\d+)/ # e.g. "1-99", "1000-1999"
 		worksheets.select { |worksheet| worksheet.name.match number_range_pattern }
 	end
 
