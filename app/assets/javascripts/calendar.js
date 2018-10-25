@@ -128,7 +128,6 @@ $(document).ready(function() {
         		rowHTML += '<td><a href="' + appointment.show_link + '" class="btn btn-primary"> view </a>'
 	        	if (appointment.checkout_link) {
 	        		rowHTML += '<a href="' + appointment.checkout_link + '" class="btn"> checkout </a>'
-	        		rowHTML += '<a href="' + appointment.destroy_link + '" class="btn btn-error"> cancel </a></td>'
 	        	}
 	        	rowHTML += '</td'
 

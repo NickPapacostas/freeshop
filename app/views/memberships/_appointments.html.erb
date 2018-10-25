@@ -13,10 +13,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% membership.completed_appointments.each do |appointment| %>
+							<% membership.past_appointments.each do |appointment| %>
 							<tr>
 								<td>
-									<%= link_to appointment.datetime.localtime.strftime("%m/%d/%Y, %a: %H:%M"), appointment_path(appointment) %>
+									<%= link_to appointment.datetime.localtime.strftime("%d/%m/%Y, %a: %H:%M"), appointment_path(appointment) %>
 								</td>
 								<td>
 									<% if appointment.checkout %>
