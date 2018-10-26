@@ -7,7 +7,7 @@ class MemberDatatable < ApplicationDatatable
       last_name:  { source: "Member.last_name",  cond: :like },
       email:      { source: "Member.email" },
       phone:      { source: "Member.phone_number" },
-      document_number:      { source: "Member.document_number" }
+      birth_year:      { source: "Member.birth_year" }
     }
   end
 
@@ -20,9 +20,9 @@ class MemberDatatable < ApplicationDatatable
         membership_id: link_to(record.membership.number, membership_path(record.membership)),
         first_name: link_to(record.first_name, membership_path(record.membership)),
         last_name: link_to(record.last_name, membership_path(record.membership)),
+        birth_year: record.birth_year,
         email: record.email,
-        phone: record.phone_number,
-        document_number: record.document_number
+        phone: record.phone_number
       }
     end
   end
