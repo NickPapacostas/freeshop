@@ -14,9 +14,9 @@ $ ->
       {data: 'membership_id'}
       {data: 'first_name'}
       {data: 'last_name'}
+      {data: 'birth_year'}
       {data: 'phone'}
       {data: 'email'}
-      {data: 'document_number'}
     ]
 
   if $('#members-datatable').hasClass('paging')

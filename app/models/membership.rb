@@ -10,6 +10,7 @@ class Membership < ApplicationRecord
 
 	accepts_nested_attributes_for :members, allow_destroy: true
 
+	validates_presence_of :number
 	validates_uniqueness_of :number
 
 	def self.next_membership_number
