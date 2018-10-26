@@ -33,7 +33,11 @@ class MemberImporter
 			next if !line.any?
 			begin
 				number, size, initial_name, initial_birth = line
-				number ||= current_membership_number
+				if number
+					current_membership_number = number
+				else
+					number = current_membership_number
+				end
 
 				first_name, last_name = parse_name(initial_name)
 				membership = find_or_build_membership(number)
@@ -43,6 +47,7 @@ class MemberImporter
 				membership.skip_point_of_contact = true
 
 				if membership.save
+					member.update_attribute(membership_id: membership.id)
 					@memberships << membership
 					@members << member
 				else
