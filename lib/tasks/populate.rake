@@ -1,11 +1,6 @@
 require 'rake'
 
 task :populate_items => :environment do
-  sizes = ["Mens", "Womens", "Boy", "Girl"]
-  sizes.each {|size| Size.create(name: size)}
-  puts "Created #{Size.count} sizes"
-
-
   item_types = [
   	"Shirts",
   	"Trousers",
@@ -33,9 +28,23 @@ task :populate_items => :environment do
   puts "Created #{ItemType.count} item types"
 
   ItemType.all.each do |item_type|
-  	Size.all.each do |size|
-  		Item.create(item_type_id: item_type.id, size_id: size.id)
-  	end
+  	if item_type.name == "Toiletries"
+      sizes = Size.toiletry_sizes
+    elsif item_type.name == "Bags"
+      sizes = Size.bag_sizes
+    elsif ["Gloves", "Hat", "Belt"].include? item_type.name
+      sizes = Size.adult_child_sizes
+    elsif item_type.name == "Scarves"
+      sizes = Size.seasonal_sizes
+    elsif item_type.name == "Household Items"
+      sizes = Size.household_item_sizes
+    else
+      sizes = Size.standard_sizes
+    end
+
+    sizes.each do |size|
+      Item.create(item_type_id: item_type.id, size_id: size.id)
+    end
   end
 
   puts "created #{Item.count} items"
