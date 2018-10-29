@@ -31,6 +31,18 @@ class AppointmentsController < ApplicationController
 		@appointment = Appointment.find(params[:id])
 	end
 
+	def update
+		@appointment = Appointment.find(params[:id])
+		if @appointment.update!(appointment_params)
+			flash.now[:success] = "appointment updated"
+			render 'show'
+		else
+			flash.now[:error] = "appointment not updated: #{@appointment.errors.map(&:message).join(", ")}"
+			render 'show'
+		end
+
+	end
+
 	def index
 		@timeslots = params[:d] ? Appointment.for_month(params[:d]) : Appointment.for_month
 

@@ -11,13 +11,21 @@
 				</div>
 
 				<div>
-					Notes: <%= @appointment.notes %>
-				</div>
-
-				<div>
 					Checkout status: <%= @appointment.checkout.nil? ? "Incomplete" : @appointment.checkout.status %>
 				</div>
 
+				<div>
+					<%= form_for @appointment do |f| %>
+						<%= f.label "Number of People", class: 'form-label' %>
+						<%= f.number_field :people_count, class: 'form-input' %>
+
+						<%= f.label "Notes", class: 'form-label' %>
+						<%= f.text_field :notes, class: 'form-input' %>
+						<%= f.submit "Update appointment", class: 'btn btn-primary' %>
+					<% end %>
+				</div>
+
+				<div class="divider big-divider"></div>
 				<% if !@appointment.checkout %>
 					<%= link_to "Checkout", new_checkout_path(appointment_id: @appointment.id), class: 'btn btn-primary' %>
 					<%= link_to "Cancel appointment", appointment_path(@appointment), method: :delete, data: { confirm: 'cancel appointment?' }, class: 'btn btn-error' %>

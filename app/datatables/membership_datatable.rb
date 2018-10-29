@@ -22,14 +22,14 @@ class MembershipDatatable < ApplicationDatatable
         last_name = link_to(last_name, membership_path(record))
       end
 
-      number = content_tag(:div, record.id, {class: "membership-id", "data-id" => record.id, "data-number" => record.number})
+      number = content_tag(:div, record.number, {class: "membership-id", "data-id" => record.id, "data-number" => record.number})
 
       {
         # example:
         number: number,
         first_name: first_name,
         last_name: last_name,
-        email: record.point_of_contact.email
+        email: record.try(:point_of_contact).try(:email)
       }
     end
   end

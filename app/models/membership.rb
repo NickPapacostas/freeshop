@@ -10,6 +10,7 @@ class Membership < ApplicationRecord
 
 	accepts_nested_attributes_for :members, allow_destroy: true
 
+  validates :members, presence: true
 	validates_presence_of :number
 	validates_uniqueness_of :number
 
@@ -40,5 +41,8 @@ class Membership < ApplicationRecord
 		end
 	end
 
+	def has_one_member
+	  errors.add(:base, 'must add at least one member') if self.members.empty?
+	end
 
 end
