@@ -33,13 +33,14 @@ class MembershipsController < ApplicationController
 
 	def update
 		@membership = Membership.find(params[:id])
-		if @membership.update(membership_params)
+		if @membership.update_attributes(membership_params)
 			@membership.update_attribute(:point_of_contact_id, @membership.members.first.id)
 
 			flash.now[:success] = 'Membership updated'
 			render 'show'
 		else
-			flash.now[:error] = 'Membership not updated'
+			flash[:error] = 'Membership not updated'
+			@membership.reload
 			render 'show'
 		end
 
