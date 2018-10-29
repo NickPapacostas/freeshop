@@ -111,9 +111,10 @@ class MemberImporter
 		elsif year = date.match(/\d{4}/)
 			# "2018"
 			year.to_s.to_i
-		elsif date.match(/\d+\/\d+\/(\d{2,4})/)
-			# "10/11/2005"
-			Date.strptime(date, "%d/%m/%Y").year
+		elsif date_match = date.match(/\d+\/\d+\/(\d{2,4})/)
+			# "10/11/2005" || "10/11/05"
+			date_format = date_match[1].length == 2 ? "%d/%m/%y" : "%d/%m/%Y"
+			Date.strptime(date, date_format).year
 		end
 	end
 
