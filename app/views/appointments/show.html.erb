@@ -2,12 +2,13 @@
 	<div class="columns">
 		<div class="column col-6">
 			<div class="appointment">
+				<div class="title" style="text-align: center">Appointment</div>
 				<div>
 					Date and time: <%= @appointment.display_datetime %>
 				</div>
 
 				<div>
-					<%= link_to "Membership: #{@appointment.membership_id}", membership_path(@appointment.membership) %>
+					<%= link_to "Membership: #{@appointment.membership.number}", membership_path(@appointment.membership) %>
 				</div>
 
 				<div>

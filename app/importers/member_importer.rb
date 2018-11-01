@@ -32,7 +32,8 @@ class MemberImporter
 			next if ix == 0
 			next if !line.any?
 			begin
-				number, size, initial_name, initial_birth = line
+				number, size, initial_name = line
+				initial_birth = line[3]
 				if number
 					current_membership_number = number
 				else
@@ -103,6 +104,7 @@ class MemberImporter
 
 	def parse_birth_year(initial_birth)
 		return nil unless initial_birth
+		return initial_birth.year if initial_birth.is_a?(Date)
 		date = initial_birth.to_s
 		if date.match("age") || date.match(/years old/i)
 			# "age 28 years old"
