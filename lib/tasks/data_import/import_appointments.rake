@@ -6,7 +6,7 @@ task :import_appointments => :environment do
 	errors = []
 	appointments_book = Spreadsheet.open './lib/tasks/data_import/appointment_list.xls'
 
-	relevant_sheets = appointments_book.worksheets.select { |sheet| sheet.name.match(/(October|November) \d{1,2}/) }
+	relevant_sheets = appointments_book.worksheets.select { |sheet| sheet.name.match(/(October|November|December) \d{1,2}/) }
 	# relevant_sheets = appointments_book.worksheets.select { |sheet| sheet.name.match(/November 7/) }
 	relevant_sheets.each do |current_sheet|
 		current_timeslot = nil
