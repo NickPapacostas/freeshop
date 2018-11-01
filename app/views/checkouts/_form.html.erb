@@ -50,17 +50,16 @@
 					</ul>
 				</div>
 			</div>
-			<% end %>
 		</div>
+		<% end %>
 	</div>
+
+	<div class="divider big-divider"></div>
+
+	<% unless @appointment.membership.past_appointments.empty? %>
+		<div class="appointment-history">
+			<%= render partial: 'memberships/appointments', locals: {membership: @appointment.membership} %>
+		</div>
+	<% end %>
 </div>
 
-
-
-<div class="divider"></div>
-
-<% unless @appointment.membership.past_appointments.empty? %>
-	<div class="appointment-history">
-		<%= render partial: 'memberships/appointments', locals: {membership: @appointment.membership} %>
-	</div>
-<% end %>
