@@ -3,7 +3,7 @@ $ ->
     columnDefs: [
       {className: "text-center", "targets": "_all"}
     ],
-    info: false
+    info: true
     pageLength: 20
     lengthChange: false
     processing: true

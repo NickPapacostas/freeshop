@@ -26,6 +26,10 @@ body {
 	display: none;
 }
 
+ul.unstyled {
+	list-style: none;
+}
+
 .big-divider {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -201,4 +205,8 @@ table#memberships-datatable tr {
 .member-age {
 	color: #4d9bf8;
 	margin-bottom: 15px;
+}
+
+.margin-bottom {
+	margin-bottom: 40px;
 }
