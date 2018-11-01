@@ -24,7 +24,7 @@ class MemberImporterTest < ActiveSupport::TestCase
 
 	test "birth year parsing" do
 		importer = MemberImporter.new
-		types_of_dates = ["10 years old", "age 10", "2008", "11/11/2008"]
+		types_of_dates = ["10 years old", "age 10", "2008", "11/11/2008", "11/11/08"]
 		types_of_dates.each do |date|
 			binding.pry if importer.parse_birth_year(date) != 2008
 			assert 2008 == importer.parse_birth_year(date)

@@ -1,3 +1,4 @@
+<div class="title margin-bottom" style="text-align: center">Appointment</div>
 <div class="container">
 	<div class="columns">
 		<div class="column col-6">
@@ -7,7 +8,7 @@
 				</div>
 
 				<div>
-					<%= link_to "Membership: #{@appointment.membership_id}", membership_path(@appointment.membership) %>
+					<%= link_to "Membership: #{@appointment.membership.number}", membership_path(@appointment.membership) %>
 				</div>
 
 				<div>
@@ -24,17 +25,19 @@
 						<%= f.submit "Update appointment", class: 'btn btn-primary' %>
 					<% end %>
 				</div>
-
-				<div class="divider big-divider"></div>
-				<% if !@appointment.checkout %>
-					<%= link_to "Checkout", new_checkout_path(appointment_id: @appointment.id), class: 'btn btn-primary' %>
-					<%= link_to "Cancel appointment", appointment_path(@appointment), method: :delete, data: { confirm: 'cancel appointment?' }, class: 'btn btn-error' %>
-				<% else %>
-
-
-				<% end %>
-
 			</div>
+		</div>
+
+		<div class="divider-vert"></div>
+
+		<div class="colum col-4">
+			<% if !@appointment.checkout %>
+				<%= link_to "Checkout", new_checkout_path(appointment_id: @appointment.id), class: 'btn btn-primary' %>
+				<%= link_to "Cancel appointment", appointment_path(@appointment), method: :delete, data: { confirm: 'cancel appointment?' }, class: 'btn btn-error' %>
+			<% else %>
+
+
+			<% end %>
 		</div>
 	</div>
 </div>

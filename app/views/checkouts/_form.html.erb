@@ -1,30 +1,61 @@
-<%= form_for @checkout do |f| %>
+<div class="checkout-header">
 	<div class="title">Checking out Membership <%= link_to "##{@appointment.membership.number}", membership_path(@appointment.membership) %></div>
 	<div class="title"><%= @appointment.display_datetime %></div>
-	<% if @appointment.notes %>
-		<div>
-			Notes:
-			<div class="checkout-notes">
-				<%= @appointment.notes %>
-			</div>
+</div>
+
+<div class="container">
+	<div class="columns">
+		<div class="column col-8">
+			<%= form_for @checkout do |f| %>
+				<% if @appointment.notes %>
+					<div>
+						Notes:
+						<div class="checkout-notes">
+							<%= @appointment.notes %>
+						</div>
+					</div>
+				<% end %>
+				<div class="divider"></div>
+				<div>Add Items</div>
+				<%= f.hidden_field :appointment_id, value: @appointment.id %>
+				<%= f.nested_fields_for :checkout_items do |checkout_items_form| %>
+
+					<%= checkout_items_form.collection_select(:item_id, @items, :id, :display_name, {}, class: 'chosen-select') %>
+
+					<%= checkout_items_form.number_field :count, value: 1 %>
+
+					<%= checkout_items_form.remove_nested_fields_link 'x' %>
+				<% end %>
+				<div class="checkout-buttons">
+					<%= f.add_nested_fields_link :checkout_items, "+", class: 'add-item btn btn-primary'  %>
+					<%= f.submit "Finished", class: "btn btn-primary checkout-submit" %>
+				</div>
+			<% end %>
 		</div>
-	<% end %>
-	<div class="divider"></div>
-	<div>Add Items</div>
-	<%= f.hidden_field :appointment_id, value: @appointment.id %>
-	<%= f.nested_fields_for :checkout_items do |checkout_items_form| %>
 
-		<%= checkout_items_form.collection_select(:item_id, @items, :id, :display_name, {}, class: 'chosen-select') %>
-
-		<%= checkout_items_form.number_field :count, value: 1 %>
-
-		<%= checkout_items_form.remove_nested_fields_link 'x' %>
-	<% end %>
-	<div class="checkout-buttons">
-		<%= f.add_nested_fields_link :checkout_items, "+", class: 'add-item btn btn-primary'  %>
-		<%= f.submit "Finished", class: "btn btn-primary checkout-submit" %>
+		<% if @checkout.membership %>
+			<div class="divider-vert"></div>
+			<div class="column col-3">
+				<div class="title">Members:</div>
+				<div>
+					<ul class="unstyled menu">
+						<% @checkout.membership.members.each do |member| %>
+							<li>
+								<div>
+									<%= member.full_name %>
+									<%= member.age %>
+								</div>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<% end %>
+		</div>
 	</div>
-<% end %>
+</div>
+
+
 
 <div class="divider"></div>
 

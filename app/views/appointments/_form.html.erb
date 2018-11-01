@@ -25,6 +25,7 @@
 											<tr>
 												<th>Name</th>
 												<th># People</th>
+												<th># in Family</th>
 												<th>Actions</th>
 											</tr>
 										</thead>
@@ -43,9 +44,6 @@
 									<div class="h5 title">Create Appointment</div>
 
 									<%= form_for @appointment do |f| %>
-
-										<%= f.label "Date", class: 'form-label' %>
-										<div class="appointment_form_datetime"></div>
 										<%= f.hidden_field :datetime %>
 
 										<div>

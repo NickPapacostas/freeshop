@@ -4,10 +4,10 @@ class Member < ApplicationRecord
 	validates_presence_of :first_name
 
 	def age
-		Date.today.year - birth_year
+		Date.today.year - birth_year unless birth_year.nil?
 	end
 
 	def full_name
-		"#{first_name} #{last_name}"
+		"#{first_name.capitalize} #{last_name.capitalize}"
 	end
 end

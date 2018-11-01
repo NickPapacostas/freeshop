@@ -28,7 +28,7 @@ class Appointment < ApplicationRecord
 		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
 			day = first_day + day_in_month.days
-			if [:wednesday?, :thursday?, :friday?, :saturday?].map {|check_method| day.send(check_method)}.any?
+			if [:wednesday?, :thursday?, :friday?].map {|check_method| day.send(check_method)}.any?
 				timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
 			end
 		end
@@ -45,7 +45,7 @@ class Appointment < ApplicationRecord
 		# could use sql query  appointment group by datetime for timeslots
 		appointments ||= where(datetime: date.beginning_of_day..date.end_of_day)
 		timeslots = []
-		start_time = date.to_time + 11.hours
+		start_time = date.to_time + (11.hours + 30.minutes)
 		timeslots << Timeslot.new(start_time)
 		next_timeslot =  start_time + appointment_length
 		while next_timeslot < date.to_time + 16.hours
@@ -82,6 +82,7 @@ class Appointment < ApplicationRecord
 		{
 			name: membership.name,
 			people_count: people_count,
+			membership_people_count: membership.members.length,
 			checkout_link: checkout_link,
 			destroy_link: destroy_link,
 			show_link: show_link,
