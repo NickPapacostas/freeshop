@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
 		@appointment.membership_id = Membership.find_by(number: appointment_params[:membership_id]).id
 
 		if @appointment.save
-			flash[:success] = 'created appointment'
+			flash[:success] = "Created appointment: membership ##{@appointment.membership.number}  #{@appointment.display_datetime} "
 			@appointment = Appointment.new
 			redirect_to new_appointment_path
 		else

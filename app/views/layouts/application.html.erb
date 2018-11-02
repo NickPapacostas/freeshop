@@ -15,13 +15,11 @@
         Freeshop
       </div>
 
-      <div class="navbar-section">
         <div class="flashes">
           <% flash.each do |key, value| %>
             <%= content_tag :div, value, class: "flash #{key}" %>
           <% end %>
         </div>
-      </div>
 
       <div class="navbar-section">
         <div id="calendar-loader" class="loading hide"></div>
