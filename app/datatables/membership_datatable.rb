@@ -17,12 +17,20 @@ class MembershipDatatable < ApplicationDatatable
       first_name = record.point_of_contact.try(:first_name)
       last_name = record.point_of_contact.try(:last_name)
 
+      number = content_tag(:div,
+        record.number,
+        {
+          class: "membership-id",
+          "data-id" => record.id,
+          "data-number" => record.number,
+          "data-name" => record.point_of_contact.try(:full_name)
+        })
+
       if !params[:modal]
         first_name = link_to(first_name, membership_path(record))
         last_name = link_to(last_name, membership_path(record))
       end
 
-      number = content_tag(:div, record.number, {class: "membership-id", "data-id" => record.id, "data-number" => record.number})
 
       {
         # example:

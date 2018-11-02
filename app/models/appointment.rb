@@ -83,6 +83,7 @@ class Appointment < ApplicationRecord
 			name: membership.name,
 			people_count: people_count,
 			membership_people_count: membership.members.length,
+			membership_number: membership.number,
 			checkout_link: checkout_link,
 			destroy_link: destroy_link,
 			show_link: show_link,

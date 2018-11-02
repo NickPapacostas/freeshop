@@ -59,14 +59,14 @@ $(document).ready(function() {
 
 	        appointments.map(function(appointment) {
 	        	var rowHTML = '<tr>'
+	        	rowHTML += '<td>' + appointment.membership_number + '</td>'
 	        	rowHTML += '<td>' + appointment.name + '</td>'
 	        	rowHTML += '<td>' + appointment.people_count + '</td>'
-	        	rowHTML += '<td>' + appointment.membership_people_count + '</td>'
         		rowHTML += '<td><a href="' + appointment.show_link + '" class="btn btn-primary"> view </a>'
 	        	if (appointment.checkout_link) {
 	        		rowHTML += '<a href="' + appointment.checkout_link + '" class="btn"> checkout </a>'
 	        	}
-	        	rowHTML += '</td'
+	        	rowHTML += '</td>'
 
 
 	        	rowHTML += '</tr>'
@@ -124,6 +124,7 @@ $(document).ready(function() {
 
 	        appointments.map(function(appointment) {
 	        	var rowHTML = '<tr>'
+	        	rowHTML += '<td>' + appointment.membership_number + '</td>'
 	        	rowHTML += '<td>' + appointment.name + '</td>'
 	        	rowHTML += '<td>' + appointment.people_count + '</td>'
         		rowHTML += '<td><a href="' + appointment.show_link + '" class="btn btn-primary"> view </a>'

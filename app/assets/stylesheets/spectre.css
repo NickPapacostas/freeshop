@@ -2504,7 +2504,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .modal.modal-lg .modal-container {
   box-shadow: none;
-  max-width: 960px;
+  max-width: 1080px;
 }
 
 .modal-container {

@@ -16,11 +16,20 @@ $ ->
 
   $('.membership_search').on('click', ->
     $('#membership_modal').addClass('active')
+    # initialization
     $('#membership_modal #memberships-datatable tr').on('click', ->
-      console.log(this)
       membershipNumber = $(this).find('div.membership-id').data('number')
-      $('#appointment_membership_id').val(membershipNumber)
-      $('#membership_modal').removeClass('active') ))
+      membershipName = $(this).find('div.membership-id').data('name')
+      $('#appointment_membership_id').val(membershipNumber + " - " + membershipName)
+      $('#membership_modal').removeClass('active'))
+
+    # once searched
+    $('#memberships-datatable_filter > label:nth-child(1) > input:nth-child(1)').on('change', ->
+      $('#membership_modal #memberships-datatable tr').on('click', ->
+        membershipNumber = $(this).find('div.membership-id').data('number')
+        membershipName = $(this).find('div.membership-id').data('name')
+        $('#appointment_membership_id').val(membershipNumber + " - " + membershipName)
+        $('#membership_modal').removeClass('active'))) )
 
 $(document).on "fields_added.nested_form_fields", (event, param) ->
   $('.chosen-select').chosen
