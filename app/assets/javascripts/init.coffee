@@ -38,5 +38,5 @@ $(document).on "fields_added.nested_form_fields", (event, param) ->
 
 $(document).keypress (e) ->
   if e.keyCode == 27
-    $('.modal').removeClass('active')
+    $('.modal.active').last().removeClass('active')
   return
