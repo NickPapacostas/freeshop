@@ -93,7 +93,7 @@ $(document).ready(function() {
 	        callback(timeslots.map(function(timeslot) {
 	        	var backgroundColor = colorForPeopleCount(timeslot.people_count, timeslot.full)
 	        	var title;
-	        	if (timeslot.people_count > 0) title = "Attending: " + timeslot.people_count
+	        	if (timeslot.people_count > 0) title = timeslot.people_count + " people"
 	        	if (!title) {
 	        		title = "No appointments"
 	        	}
