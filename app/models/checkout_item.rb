@@ -9,5 +9,6 @@ class CheckoutItem < ApplicationRecord
       item = Item.find_by(item_type: ItemType.find_by(name: type_and_size[0]), size: Size.find_by(name: type_and_size[1]))
       CheckoutItem.new(item: item, count: 1)
     end
+  end
 end
 
