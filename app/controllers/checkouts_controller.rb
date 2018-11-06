@@ -2,7 +2,13 @@ class CheckoutsController < ApplicationController
 	def new
 		@appointment = Appointment.find(params[:appointment_id])
 		@checkout = Checkout.new(appointment_id: params[:appointment_id])
+
+		CheckoutItem.build_default_items.each do |checkout_item|
+			@checkout.checkout_items.build(item: checkout_item.item, count: 1)
+		end
+
 		@checkout.checkout_items.build
+
 		@items = Item.all
 	end
 
