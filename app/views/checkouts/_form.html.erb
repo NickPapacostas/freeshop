@@ -3,6 +3,7 @@
 	<div class="title"><%= @appointment.display_datetime %></div>
 </div>
 
+<div class="divider"></div>
 <div class="container">
 	<div class="columns">
 		<div class="column col-8">
@@ -15,8 +16,7 @@
 						</div>
 					</div>
 				<% end %>
-				<div class="divider"></div>
-				<div>Add Items</div>
+				<div class="title">Add Items</div>
 				<%= f.hidden_field :appointment_id, value: @appointment.id %>
 				<%= f.nested_fields_for :checkout_items do |checkout_items_form| %>
 
