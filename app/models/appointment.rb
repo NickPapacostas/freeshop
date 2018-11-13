@@ -28,7 +28,7 @@ class Appointment < ApplicationRecord
 		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
 			day = first_day + day_in_month.days
-			if [:wednesday?, :thursday?, :friday?].map {|check_method| day.send(check_method)}.any?
+			if [:tuesday?, :wednesday?, :thursday?, :friday?].map {|check_method| day.send(check_method)}.any?
 				timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
 			end
 		end
