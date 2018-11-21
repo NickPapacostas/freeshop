@@ -55,7 +55,7 @@ class Membership < ApplicationRecord
 				totals[item] = totals[item] + count
 			end
 		end
-		totals
+		totals.sort_by {|key, value| -value}
 	end
 
 end
