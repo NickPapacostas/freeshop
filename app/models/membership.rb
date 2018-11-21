@@ -1,6 +1,8 @@
 class Membership < ApplicationRecord
 	has_many :members, dependent: :destroy
+
 	has_many :appointments
+	has_many :checkouts, through: :appointments
 
 	has_one :point_of_contact, class_name: 'Member'
 
@@ -43,6 +45,17 @@ class Membership < ApplicationRecord
 
 	def has_one_member
 	  errors.add(:base, 'must add at least one member') if self.members.empty?
+	end
+
+	def item_totals
+		totals = Hash.new(0)
+		checkout_totals = checkouts.map(&:item_totals)
+		checkout_totals.each do |totals_hash|
+			totals_hash.each do |item, count|
+				totals[item] = totals[item] + count
+			end
+		end
+		totals
 	end
 
 end

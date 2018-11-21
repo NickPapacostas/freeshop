@@ -1,6 +1,6 @@
 <% membership ||= @membership %>
 <div class="container">
-	<div class="columns">
+	<div class="columns appointment-columns">
 		<div class="column col-5">
 			<div class='appointments-header h4'>Appointment history</div>
 			<ul class='membership-appointments'>
@@ -58,5 +58,30 @@
 				</div>
 			</ul>
 		</div>
+		<% unless @membership.checkouts.empty? %>
+			<div class="column col-5 checkout-totals margin-top">
+				<div class='appointments-header h5'>Checked Out Item Totals</div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @membership.item_totals.each do |item, total| %>
+							<tr>
+								<td>
+									<%= item %>
+								</td>
+								<td>
+									<%= total %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
 	</div>
 </div>
