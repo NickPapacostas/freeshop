@@ -21,6 +21,9 @@ class Appointment < ApplicationRecord
 		where(datetime: Date.today.beginning_of_month..Date.today.end_of_month)
 	end
 
+	def self.restricted_day?(date)
+		(Date.parse("15/12/2018")..Date.parse("15/1/2019")).include? date
+	end
 
 	def self.for_month(month = Date.today.month, year = Time.current.year)
 		first_day = Date.new(year, month)
@@ -29,7 +32,9 @@ class Appointment < ApplicationRecord
 		Time.days_in_month(month).times do |day_in_month|
 			day = first_day + day_in_month.days
 			if [:tuesday?, :wednesday?, :thursday?, :friday?].map {|check_method| day.send(check_method)}.any?
-				timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
+				unless restricted_day?(day)
+					timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
+				end
 			end
 		end
 		timeslots.flatten
@@ -42,13 +47,19 @@ class Appointment < ApplicationRecord
 	end
 
 	def self.timeslots_for_day(date = Date.today, appointments = nil, appointment_length = @@appointment_length)
-		# could use sql query  appointment group by datetime for timeslots
 		appointments ||= where(datetime: date.beginning_of_day..date.end_of_day)
 		timeslots = []
 		start_time = date.to_time + (11.hours + 30.minutes)
+
+		if date.tuesday?
+			end_time = date.to_time + 14.hours
+		else
+			end_time = date.to_time + 16.hours
+		end
+
 		timeslots << Timeslot.new(start_time)
 		next_timeslot =  start_time + appointment_length
-		while next_timeslot < date.to_time + 16.hours
+		while next_timeslot < end_time
 			timeslots << Timeslot.new(next_timeslot, appointments)
 			next_timeslot += appointment_length
 		end
