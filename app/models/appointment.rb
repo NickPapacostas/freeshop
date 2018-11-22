@@ -22,7 +22,7 @@ class Appointment < ApplicationRecord
 	end
 
 	def self.restricted_day?(date)
-		(Date.parse("15/12/2018")..Date.parse("15/1/2019")).include? date
+		(Date.parse("24/12/2018")..Date.parse("05/1/2019")).include? date
 	end
 
 	def self.for_month(month = Date.today.month, year = Time.current.year)
