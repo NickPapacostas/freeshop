@@ -12,7 +12,7 @@
 				</div>
 
 				<div>
-					Appointment: <%= link_to @checkout.appointment.datetime, checkout_path(@checkout) %>
+					Appointment: <%= link_to @checkout.appointment.datetime, appointment_path(@checkout.appointment) %>
 				</div>
 
 				<div>
@@ -29,6 +29,7 @@
 
 		<div class="column col-5">
 			<%= link_to("Schedule appointment", new_appointment_path, class: 'btn btn-primary') %>
+			<%= link_to("Edit Checkout", edit_checkout_path(@checkout), class: 'btn btn-primary') %>
 		</div>
 	</div>
 </div>

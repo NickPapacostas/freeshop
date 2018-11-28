@@ -13,6 +13,7 @@
 
 				<div>
 					Checkout status: <%= @appointment.checkout.nil? ? "Incomplete" : @appointment.checkout.status %>
+
 				</div>
 
 				<div>
@@ -35,6 +36,7 @@
 				<%= link_to "Checkout", new_checkout_path(appointment_id: @appointment.id), class: 'btn btn-primary' %>
 				<%= link_to "Cancel appointment", appointment_path(@appointment), method: :delete, data: { confirm: 'cancel appointment?' }, class: 'btn btn-error' %>
 			<% else %>
+				<%= link_to "View Checkout", checkout_path(@appointment.checkout), class: 'btn btn-primary' %>
 
 
 			<% end %>
