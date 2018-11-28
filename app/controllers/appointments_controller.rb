@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
 
 	def create
 		@appointment = Appointment.new(appointment_params)
-
+ 		@appointment.people_count = 1 if @appointment.people_count.nil?
 		# so that the form can still be generated with "membership_id"
 		membership_number = appointment_params[:membership_id].split(" - ").first
 		@appointment.membership_id = Membership.find_by(number: appointment_params[:membership_id]).id
