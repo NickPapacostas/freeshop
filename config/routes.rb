@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    get 'dashboard', to: 'dashboards#show'
+    get 'dashboard/by_day', to: 'dashboards#checkout_items_by_day'
+    get 'dashboard/top_for_day', to: 'dashboards#top_for_day'
+  end
+
   resources :memberships
   resources :members
 
