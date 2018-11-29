@@ -15,12 +15,14 @@
 //= require rails-ujs
 //= require activestorage
 //= require datatables
+//= require moment
 //= require_tree .
 //= require chosen-jquery
 //= require layout
 //= require nested_form_fields
-//= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
 //= require calendar
 //= require memberships
+//= require Chart
+//= require admin/dashboard

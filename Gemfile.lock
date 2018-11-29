@@ -99,6 +99,8 @@ GEM
       momentjs-rails (>= 2.9.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.1.0)
+      activesupport (>= 4.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -250,6 +252,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   fullcalendar-rails
+  groupdate
   jbuilder (~> 2.5)
   jquery-datatables
   jquery-rails

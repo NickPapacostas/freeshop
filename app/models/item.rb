@@ -7,5 +7,9 @@ class Item < ApplicationRecord
 	def display_name
 		"#{item_type.name} -- #{size.name}"
 	end
+
+	def type_and_size
+		[item_type, size]
+	end
 end
 

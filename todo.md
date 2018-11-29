@@ -32,3 +32,6 @@ x- show people count and attending on checkout and dashboard appointment show
 - on failed checkout create loses number of items
 
 
+
+
+- destroy low item id checkout items!
