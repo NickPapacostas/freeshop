@@ -36,7 +36,7 @@ var itemChartConfig = function(data) {
       responsive: true,
       title: {
         display: true,
-        text: 'Items'
+        text: 'Items (click a bar for details)'
       },
       scales: {
         xAxes: [{
