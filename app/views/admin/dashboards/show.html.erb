@@ -1,34 +1,8 @@
 <div class="container">
-<<<<<<< Updated upstream
-	<div class="columns">
-		<div class="column col-5">
-			<div class='h5'>Total: <%= CheckoutItem.sum(:count) %> </div>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Item</th>
-						<th>Count</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% CheckoutItem.top_items.each do |item, total| %>
-						<tr>
-							<td>
-								<%= item %>
-							</td>
-							<td>
-								<%= total %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-=======
 	<div class="card">
 		<div class="card-header">
 			<div class="card-title h5">Items</div>
 			<div class="card-subtitle text-gray">Total: <%= CheckoutItem.sum(:count) %> </div>
->>>>>>> Stashed changes
 		</div>
 		<div class="card-body">
 			<div class="columns">
