@@ -18,8 +18,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard', to: 'dashboards#show'
-    get 'dashboard/by_day', to: 'dashboards#checkout_items_by_day'
+    get 'dashboard/items', to: 'dashboards#items'
     get 'dashboard/top_for_day', to: 'dashboards#top_for_day'
+    get 'dashboard/appointments', to: 'dashboards#appointments'
   end
 
   resources :memberships

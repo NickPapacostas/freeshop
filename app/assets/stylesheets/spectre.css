@@ -576,9 +576,9 @@ dl dd {
 
 .btn:focus,
 .btn:hover {
-  background: #f1f1fc;
-  border-color: #4b48d6;
-  text-decoration: none;
+  background: #1fb797;
+  border-color: #ea6b3b;
+  color: white;
 }
 
 .btn:active,
