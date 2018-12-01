@@ -162,16 +162,14 @@ var appointmentChartConfig = function(data) {
               fontStyle: 'bold',
               fontColor: '#FF0000'
             }
-          },
-          stacked: true
+          }
         }],
         yAxes: [{
           display: true,
           scaleLabel: {
             display: true,
             labelString: 'value'
-          },
-          stacked: true
+          }
         }],
         // tooltips: {
         //   callbacks: {
