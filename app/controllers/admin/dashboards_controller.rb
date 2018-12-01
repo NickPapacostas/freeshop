@@ -24,8 +24,8 @@ class Admin::DashboardsController < ApplicationController
 
 
 	def appointments
-		appointments_by_day = Appointment.where('created_at > ?', Date.new(2018, 11, 3)).group_by_day(:created_at).count.to_a
-		attendees_by_day = Appointment.where('created_at > ?', Date.new(2018, 11, 3)).group_by_day(:created_at).sum(:people_count).to_a
+		appointments_by_day = Appointment.where(attended: true).where('created_at > ?', Date.new(2018, 11, 3)).group_by_day(:created_at).count.to_a
+		attendees_by_day = Appointment.where(attended: true).where('created_at > ?', Date.new(2018, 11, 3)).group_by_day(:created_at).sum(:people_count).to_a
 
 		respond_to do |format|
 	    format.html
