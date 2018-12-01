@@ -227,23 +227,25 @@ var appointmentChartClick = function(event) {
 
 
 window.onload = function() {
-  var itemChart = initChart('/admin/dashboard/items', itemChartConfig, function(totals) {
-    chartData = totals.map(function(total) {
-      return {x: total[0], y: total[1]}
-    })
-    var config = itemChartConfig(chartData)
-    var ctx = document.getElementById('item-chart').getContext('2d');
-    window.itemChart = new Chart(ctx, config);
-  });
+  if (document.getElementById('item-chart')) {
+    var itemChart = initChart('/admin/dashboard/items', itemChartConfig, function(totals) {
+      chartData = totals.map(function(total) {
+        return {x: total[0], y: total[1]}
+      })
+      var config = itemChartConfig(chartData)
+      var ctx = document.getElementById('item-chart').getContext('2d');
+      window.itemChart = new Chart(ctx, config);
+    });
 
-  var appointmentChart = initChart('/admin/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
-    var dateAndCountToXY = function(dateAndCount) { return {x: dateAndCount[0], y: dateAndCount[1], stack: dateAndCount[0]} }
-    console.log(appointmentsAndAttendees, appointmentsAndAttendees.appointments )
-    var appointments = appointmentsAndAttendees.appointments.map(dateAndCountToXY)
-    var attendees = appointmentsAndAttendees.attendees.map(dateAndCountToXY)
+    var appointmentChart = initChart('/admin/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
+      var dateAndCountToXY = function(dateAndCount) { return {x: dateAndCount[0], y: dateAndCount[1], stack: dateAndCount[0]} }
+      console.log(appointmentsAndAttendees, appointmentsAndAttendees.appointments )
+      var appointments = appointmentsAndAttendees.appointments.map(dateAndCountToXY)
+      var attendees = appointmentsAndAttendees.attendees.map(dateAndCountToXY)
 
-    var config = appointmentChartConfig({appointments: appointments, attendees: attendees})
-    var ctx = document.getElementById('appointments-chart').getContext('2d');
-    window.appointmentChart = new Chart(ctx, config);
-  });
+      var config = appointmentChartConfig({appointments: appointments, attendees: attendees})
+      var ctx = document.getElementById('appointments-chart').getContext('2d');
+      window.appointmentChart = new Chart(ctx, config);
+    });
+  }
 };
