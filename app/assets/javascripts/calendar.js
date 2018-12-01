@@ -85,6 +85,13 @@ $(document).ready(function() {
 
 	$('#todays-appointments').fullCalendar({
 		defaultView: 'listDay',
+		// businessHours: {
+		//   // days of week. an array of zero-based day of week integers (0=Sunday)
+		//   dow: [3, 4, 5], // Monday - Thursday
+
+		//   start: '9:30', // a start time (10am in this example)
+		//   end: '17:00', // an end time (6pm in this example)
+		// },
 	  events: function(start, end, timezone, callback) {
 	    $.ajax({
 	      url: '/appointments/by_day?date=' + start.toString(),

@@ -222,3 +222,11 @@ table#memberships-datatable tr {
 .appointment-columns {
 	justify-content: center;
 }
+
+
+/*Admin*/
+
+#top-items-date {
+	float: left;
+	margin-right: 10px;
+}
