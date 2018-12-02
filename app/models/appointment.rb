@@ -54,7 +54,7 @@ class Appointment < ApplicationRecord
 		if date.tuesday?
 			end_time = date.to_time + 14.hours
 		else
-			end_time = date.to_time + 17.hours
+			end_time = date.to_time + 16.hours
 		end
 
 		timeslots << Timeslot.new(start_time)
