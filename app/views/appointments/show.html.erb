@@ -1,5 +1,7 @@
 <div class="title margin-bottom" style="text-align: center">Appointment</div>
 <div class="container">
+	<%= render partial: 'update_appointment_calendar' %>
+
 	<div class="columns">
 		<div class="column col-6">
 			<div class="appointment">
@@ -24,6 +26,9 @@
 						<%= f.label "Notes", class: 'form-label' %>
 						<%= f.text_field :notes, class: 'form-input' %>
 
+
+						<%= f.hidden_field :datetime %>
+
 						<%= f.submit "Update appointment", class: 'btn btn-primary' %>
 					<% end %>
 				</div>
@@ -33,7 +38,8 @@
 		<div class="divider-vert"></div>
 
 		<div class="colum col-4">
-			<a href="#" id="appointment-change-date" class="btn btn-primary">Change Date & Time</a>
+			<div id="appointment-change-date" class="btn btn-primary">Change Date & Time</div>
+
 
 			<% if !@appointment.checkout %>
 				<%= link_to "Checkout", new_checkout_path(appointment_id: @appointment.id), class: 'btn btn-primary' %>
