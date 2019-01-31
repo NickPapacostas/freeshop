@@ -27,7 +27,7 @@ class Appointment < ApplicationRecord
 
 	def self.for_month(month = Date.today.month, year = Time.current.year)
 		first_day = Date.new(year, month)
-		appointments = where(datetime: first_day.beginning_of_month..first_day.end_of_month)
+		appointments = Appointment.where(datetime: first_day.beginning_of_month..(first_day.end_of_month + 1.days))
 		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
 			day = first_day + day_in_month.days
