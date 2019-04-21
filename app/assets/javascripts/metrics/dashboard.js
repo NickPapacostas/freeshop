@@ -131,8 +131,8 @@ var appointmentChartConfig = function(data) {
         data: data.appointments
       },{
         label: 'Attendees',
-        backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-        borderColor: window.chartColors.green,
+        backgroundColor: color(window.chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.orange,
         fill: false,
         data: data.attendees
       }]
