@@ -36,7 +36,7 @@ $(document).on "fields_added.nested_form_fields", (event, param) ->
     allow_single_deselect: true
     no_results_text: 'No results matched'
 
-$(document).keypress (e) ->
-  if e.keyCode == 27
+$(document).keydown (e) ->
+  if e.key == "Escape"
     $('.modal.active').last().removeClass('active')
   return
