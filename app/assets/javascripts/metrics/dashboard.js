@@ -91,7 +91,7 @@ var itemChartClick = function(event) {
   $('#top-for-day-table > tbody > tr').remove();
 
   $.ajax({
-    url: '/admin/dashboard/top_for_day?date=' + value.x,
+    url: '/metrics/dashboard/top_for_day?date=' + value.x,
     dataType: 'json',
     success: function(items_and_counts) {
       if (items_and_counts.length) {
@@ -199,7 +199,7 @@ var appointmentChartClick = function(event) {
   // $('#top-for-day-table > tbody > tr').remove();
 
   // $.ajax({
-  //   url: '/admin/dashboard/top_for_day?date=' + value.x,
+  //   url: '/metrics/dashboard/top_for_day?date=' + value.x,
   //   dataType: 'json',
   //   success: function(items_and_counts) {
   //     if (items_and_counts.length) {
@@ -228,7 +228,7 @@ var appointmentChartClick = function(event) {
 
 window.onload = function() {
   if (document.getElementById('item-chart')) {
-    var itemChart = initChart('/admin/dashboard/items', itemChartConfig, function(totals) {
+    var itemChart = initChart('/metrics/dashboard/items', itemChartConfig, function(totals) {
       chartData = totals.map(function(total) {
         return {x: total[0], y: total[1]}
       })
@@ -237,7 +237,7 @@ window.onload = function() {
       window.itemChart = new Chart(ctx, config);
     });
 
-    var appointmentChart = initChart('/admin/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
+    var appointmentChart = initChart('/metrics/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
       var dateAndCountToXY = function(dateAndCount) { return {x: dateAndCount[0], y: dateAndCount[1], stack: dateAndCount[0]} }
       console.log(appointmentsAndAttendees, appointmentsAndAttendees.appointments )
       var appointments = appointmentsAndAttendees.appointments.map(dateAndCountToXY)

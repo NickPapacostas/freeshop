@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'volunteers/sign_up', to: 'volunteers#no_signups'
 
-  devise_for :volunteers
+  devise_for :volunteers, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :admin do
+  namespace :metrics do
     get 'dashboard', to: 'dashboards#show'
     get 'dashboard/items', to: 'dashboards#items'
     get 'dashboard/top_for_day', to: 'dashboards#top_for_day'

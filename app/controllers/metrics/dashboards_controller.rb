@@ -1,4 +1,4 @@
-class Admin::DashboardsController < ApplicationController
+class Metrics::DashboardsController < ApplicationController
 	def show
 
 	end

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require active_admin
 //= require activestorage
 //= require datatables
 //= require moment
