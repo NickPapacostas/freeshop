@@ -24,4 +24,8 @@ class Size < ApplicationRecord
 	def self.household_item_sizes
 		["Blanket", "Sheet", "Misc"].map {|name| Size.where(name: name).first_or_create}
 	end
+
+	def self.toy_sizes
+		["Kids"].map {|name| Size.where(name: name).first_or_create}
+	end
 end

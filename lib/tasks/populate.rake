@@ -21,7 +21,8 @@ task :populate_items => :environment do
   	"Hat",
   	"Belt",
   	"Scarves",
-  	"Household Items"
+  	"Household Items",
+    "Toys"
   ]
 
   item_types.each {|item_type| ItemType.create(name: item_type)}
@@ -38,6 +39,8 @@ task :populate_items => :environment do
       sizes = Size.seasonal_sizes
     elsif item_type.name == "Household Items"
       sizes = Size.household_item_sizes
+    elsif item_type.name == "Toys"
+      sizes = Size.toy_sizes
     else
       sizes = Size.standard_sizes
     end
