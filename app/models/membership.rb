@@ -1,5 +1,5 @@
 class Membership < ApplicationRecord
-	has_many :members, dependent: :destroy
+	has_many :members, -> { order(:id) }, dependent: :destroy
 
 	has_many :appointments
 	has_many :checkouts, through: :appointments
