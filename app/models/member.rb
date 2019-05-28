@@ -1,5 +1,5 @@
 class Member < ApplicationRecord
-	belongs_to :membership
+	belongs_to :membership, optional: true
 
 	validates_presence_of :first_name
 
