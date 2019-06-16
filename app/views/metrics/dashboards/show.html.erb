@@ -7,6 +7,16 @@
 		<div class="card-body">
 			<div class="columns">
 				<div class="column col-10">
+					<div class="item-chart-start-date-field">
+						<label class="form-label">Start date:</label>
+						<input type="date" class="item-chart-input" id="item-chart-start-date" value="<%= @start_date %>">
+
+					</div>
+					<div>
+						<label class="form-label">End date:</label>
+						<input type="date" class="item-chart-input" id="item-chart-end-date" value="<%= @end_date %>">
+					</div>
+
 					<canvas id='item-chart'></canvas>
 					<div id='top-for-day' class='d-invisible'>
 						<div id='top-items-date'></div>

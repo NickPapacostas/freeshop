@@ -224,9 +224,15 @@ table#memberships-datatable tr {
 }
 
 
-/*Admin*/
+
+/*Metrics*/
 
 #top-items-date {
 	float: left;
 	margin-right: 10px;
 }
+
+.item-chart-start-date-field {
+  float: left;
+}
+

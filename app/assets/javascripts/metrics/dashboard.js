@@ -8,13 +8,6 @@ window.chartColors = {
   grey: 'rgb(201, 203, 207)'
 };
 
-var initChart = function(url, chartConfig, callback) {
-  var data = $.ajax({
-    url: url,
-    dataType: 'json',
-    success: callback
-  })
-}
 
 var itemChartConfig = function(data) {
   var color = Chart.helpers.color;
@@ -225,27 +218,48 @@ var appointmentChartClick = function(event) {
 
 
 
+var initItemChart = function(){
+  startDate = $('#item-chart-start-date').val()
+  endDate = $('#item-chart-end-date').val()
+  initChart('/metrics/dashboard/items?start_date=' + startDate + '&end_date=' + endDate, itemChartConfig, function(totals) {
+    chartData = totals.map(function(total) {
+      return {x: total[0], y: total[1]}
+    })
+    var config = itemChartConfig(chartData)
+    var ctx = document.getElementById('item-chart').getContext('2d');
+    window.itemChart = new Chart(ctx, config);
+  });
+}
+
+var initAppointmentChart = function() {
+  initChart('/metrics/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
+    var dateAndCountToXY = function(dateAndCount) { return {x: dateAndCount[0], y: dateAndCount[1], stack: dateAndCount[0]} }
+    var appointments = appointmentsAndAttendees.appointments.map(dateAndCountToXY)
+    var attendees = appointmentsAndAttendees.attendees.map(dateAndCountToXY)
+
+    var config = appointmentChartConfig({appointments: appointments, attendees: attendees})
+    var ctx = document.getElementById('appointments-chart').getContext('2d');
+    window.appointmentChart = new Chart(ctx, config);
+  });
+}
+
+var initChart = function(url, chartConfig, callback) {
+  var data = $.ajax({
+    url: url,
+    dataType: 'json',
+    success: callback
+  })
+}
 
 window.onload = function() {
   if (document.getElementById('item-chart')) {
-    var itemChart = initChart('/metrics/dashboard/items', itemChartConfig, function(totals) {
-      chartData = totals.map(function(total) {
-        return {x: total[0], y: total[1]}
-      })
-      var config = itemChartConfig(chartData)
-      var ctx = document.getElementById('item-chart').getContext('2d');
-      window.itemChart = new Chart(ctx, config);
-    });
+    initItemChart()
+    initAppointmentChart()
 
-    var appointmentChart = initChart('/metrics/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
-      var dateAndCountToXY = function(dateAndCount) { return {x: dateAndCount[0], y: dateAndCount[1], stack: dateAndCount[0]} }
-      console.log(appointmentsAndAttendees, appointmentsAndAttendees.appointments )
-      var appointments = appointmentsAndAttendees.appointments.map(dateAndCountToXY)
-      var attendees = appointmentsAndAttendees.attendees.map(dateAndCountToXY)
+    $('.item-chart-input').change(function(){
+      window.itemChart.destroy()
+      initItemChart()
+    })
 
-      var config = appointmentChartConfig({appointments: appointments, attendees: attendees})
-      var ctx = document.getElementById('appointments-chart').getContext('2d');
-      window.appointmentChart = new Chart(ctx, config);
-    });
   }
 };

@@ -1,6 +1,6 @@
 class Metrics::DashboardsController < ApplicationController
 	def show
-
+		set_item_dates
 	end
 
 	def top_for_day
@@ -14,7 +14,8 @@ class Metrics::DashboardsController < ApplicationController
 	end
 
 	def items
-		counts_by_day = CheckoutItem.group_by_day(:created_at).sum(:count).to_a
+		set_item_dates
+		counts_by_day = CheckoutItem.where(created_at: @start_date..@end_date).group_by_day(:created_at).sum(:count).to_a
 
 		respond_to do |format|
 	    format.html
@@ -33,5 +34,19 @@ class Metrics::DashboardsController < ApplicationController
 	  end
 	end
 
+	private
 
+	def set_item_dates
+		@start_date = if params[:start_date]
+			Date.parse(params[:start_date])
+		else
+			Date.today - 2.months
+		end
+
+		@end_date = if params[:end_date]
+			Date.parse(params[:end_date])
+		else
+			Date.today + 1.days
+		end
+	end
 end
