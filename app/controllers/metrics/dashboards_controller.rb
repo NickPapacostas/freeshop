@@ -1,11 +1,11 @@
 class Metrics::DashboardsController < ApplicationController
 	def show
-		set_item_dates
+		set_dates
 	end
 
 	def top_for_day
 		date = Date.parse(params[:date])
-		item_counts = CheckoutItem.top_items(5, date)
+		item_counts = CheckoutItem.top_items(5, date.beginning_of_day, date.end_of_day)
 
 		respond_to do |format|
 	    format.html
@@ -14,19 +14,24 @@ class Metrics::DashboardsController < ApplicationController
 	end
 
 	def items
-		set_item_dates
-		counts_by_day = CheckoutItem.where(created_at: @start_date..@end_date).group_by_day(:created_at).sum(:count).to_a
+		set_dates
+		checkout_items = CheckoutItem.where(created_at: @start_date..@end_date)
+		counts_by_day = checkout_items.group_by_day(:created_at).sum(:count).to_a
+		@total = checkout_items.sum(:count)
+
+		top_items = CheckoutItem.top_items(10, @start_date, @end_date)
 
 		respond_to do |format|
 	    format.html
-	    format.json { render json: counts_by_day }
+	    format.json { render json: [counts_by_day, @total, top_items] }
 	  end
 	end
 
 
 	def appointments
-		appointments_by_day = Appointment.where(attended: true).where('created_at > ?', Date.new(2018, 11, 3)).group_by_day(:created_at).count.to_a
-		attendees_by_day = Appointment.where(attended: true).where('created_at > ?', Date.new(2018, 11, 3)).group_by_day(:created_at).sum(:people_count).to_a
+		set_dates
+		appointments_by_day = Appointment.where(attended: true).where(created_at: @start_date..@end_date).group_by_day(:created_at).count.to_a
+		attendees_by_day = Appointment.where(attended: true).where(created_at: @start_date..@end_date).group_by_day(:created_at).sum(:people_count).to_a
 
 		respond_to do |format|
 	    format.html
@@ -36,7 +41,7 @@ class Metrics::DashboardsController < ApplicationController
 
 	private
 
-	def set_item_dates
+	def set_dates
 		@start_date = if params[:start_date]
 			Date.parse(params[:start_date])
 		else

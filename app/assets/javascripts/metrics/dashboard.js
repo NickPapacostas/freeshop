@@ -75,6 +75,18 @@ var itemChartConfig = function(data) {
 
 }
 
+var itemChartDateChange = function(newItemsAndCounts){
+  $('#top-for-period > tbody > tr').remove();
+  newItemsAndCounts.map(function(item_and_count) {
+    var rowHTML = '<tr>'
+    rowHTML += '<td>' + item_and_count[0] + '</td>'
+    rowHTML += '<td>' + item_and_count[1] + '</td>'
+    rowHTML += '</td>'
+    rowHTML += '</tr>'
+    $('#top-for-period > tbody').append(rowHTML)
+  });
+}
+
 var itemChartClick = function(event) {
   var activePoint = itemChart.getElementAtEvent(event)[0];
   var data = activePoint._chart.data;
@@ -221,18 +233,27 @@ var appointmentChartClick = function(event) {
 var initItemChart = function(){
   startDate = $('#item-chart-start-date').val()
   endDate = $('#item-chart-end-date').val()
-  initChart('/metrics/dashboard/items?start_date=' + startDate + '&end_date=' + endDate, itemChartConfig, function(totals) {
+  initChart('/metrics/dashboard/items?start_date=' + startDate + '&end_date=' + endDate, itemChartConfig, function(totals_and_items) {
+    totals = totals_and_items[0]
+    total = totals_and_items[1]
+    top_items = totals_and_items[2]
+
+    $('#item-chart-total').text("Total for period: "+ total)
     chartData = totals.map(function(total) {
       return {x: total[0], y: total[1]}
     })
     var config = itemChartConfig(chartData)
     var ctx = document.getElementById('item-chart').getContext('2d');
     window.itemChart = new Chart(ctx, config);
+    itemChartDateChange(top_items)
   });
 }
 
 var initAppointmentChart = function() {
-  initChart('/metrics/dashboard/appointments', appointmentChartConfig, function(appointmentsAndAttendees) {
+  startDate = $('#appointment-chart-start-date').val()
+  endDate = $('#appointment-chart-end-date').val()
+
+  initChart('/metrics/dashboard/appointments?start_date=' + startDate + '&end_date=' + endDate, appointmentChartConfig, function(appointmentsAndAttendees) {
     var dateAndCountToXY = function(dateAndCount) { return {x: dateAndCount[0], y: dateAndCount[1], stack: dateAndCount[0]} }
     var appointments = appointmentsAndAttendees.appointments.map(dateAndCountToXY)
     var attendees = appointmentsAndAttendees.attendees.map(dateAndCountToXY)
@@ -259,6 +280,11 @@ window.onload = function() {
     $('.item-chart-input').change(function(){
       window.itemChart.destroy()
       initItemChart()
+    })
+
+    $('.appointment-chart-input').change(function(){
+      window.appointmentChart.destroy()
+      initAppointmentChart()
     })
 
   }

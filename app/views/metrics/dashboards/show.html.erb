@@ -2,11 +2,10 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="card-title h5">Items</div>
-			<div class="card-subtitle text-gray">Total: <%= CheckoutItem.sum(:count) %> </div>
 		</div>
 		<div class="card-body">
 			<div class="columns">
-				<div class="column col-10">
+				<div class="column col-9">
 					<div class="item-chart-start-date-field">
 						<label class="form-label">Start date:</label>
 						<input type="date" class="item-chart-input" id="item-chart-start-date" value="<%= @start_date %>">
@@ -16,7 +15,7 @@
 						<label class="form-label">End date:</label>
 						<input type="date" class="item-chart-input" id="item-chart-end-date" value="<%= @end_date %>">
 					</div>
-
+					<div class="card-subtitle text-gray" id="item-chart-total">Total: <%= @total %> </div>
 					<canvas id='item-chart'></canvas>
 					<div id='top-for-day' class='d-invisible'>
 						<div id='top-items-date'></div>
@@ -37,8 +36,10 @@
 					</div>
 				</div>
 				<div class="divider-vert"></div>
-				<div class="column col-1">
-					<table class="table table-hover">
+				<div class="column col-2">
+					<div class="card-subtitle text-gray">Top Items </div>
+
+					<table id="top-for-period" class="table table-hover">
 						<thead>
 							<tr>
 								<th>Item</th>
@@ -46,16 +47,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% CheckoutItem.top_items.each do |item, total| %>
-							<tr>
-								<td>
-									<%= item %>
-								</td>
-								<td>
-									<%= total %>
-								</td>
-							</tr>
-							<% end %>
+
 						</tbody>
 					</table>
 				</div>
@@ -69,12 +61,22 @@
 			<div class="appointments-subtitles">
 				<div class="card-subtitle">Scheduled: <%= Appointment.count %> </div>
 				<% percent_attended = (Appointment.where(attended: true).count.to_f / Appointment.count).round(4) * 100 %>
+
 				<div class="card-subtitle">Attended: <%= "#{Appointment.where(attended: true).count} (#{percent_attended}%)" %> </div>
 				<div class="card-subtitle">Attendees: <%= "#{Appointment.where(attended: true).sum(:people_count)}" %> </div>
 			</div>
 		</div>
 		<div class="card-body">
 			<div class="columns">
+				<div class="appoinment-chart-start-date-field">
+					<label class="form-label">Start date:</label>
+					<input type="date" class="appointment-chart-input" id="appointment-chart-start-date" value="<%= @start_date %>">
+				</div>
+				<div>
+					<label class="form-label">End date:</label>
+					<input type="date" class="appointment-chart-input" id="appointment-chart-end-date" value="<%= @end_date %>">
+				</div>
+
 				<canvas id="appointments-chart"></canvas>
 			</div>
 		</div>

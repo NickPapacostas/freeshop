@@ -11,9 +11,9 @@ class CheckoutItem < ApplicationRecord
     end
   end
 
-  def self.top_items(number = 10, date = nil)
-    if date
-      relation = CheckoutItem.where(created_at: date.beginning_of_day..date.end_of_day)
+  def self.top_items(number = 10, start_date = nil, end_date = nil)
+    if start_date && end_date
+      relation = CheckoutItem.where(created_at: start_date..end_date)
     else
       relation = CheckoutItem
     end
