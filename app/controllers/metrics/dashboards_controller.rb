@@ -19,7 +19,7 @@ class Metrics::DashboardsController < ApplicationController
 		counts_by_day = checkout_items.group_by_day(:created_at).sum(:count).to_a
 		@total = checkout_items.sum(:count)
 
-		top_items = CheckoutItem.top_items(10, @start_date, @end_date)
+		top_items = CheckoutItem.top_items(nil, @start_date, @end_date)
 
 		respond_to do |format|
 	    format.html
