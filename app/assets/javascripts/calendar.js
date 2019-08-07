@@ -19,7 +19,7 @@ $(document).ready(function() {
 		  end: '17:00', // an end time (6pm in this example)
 		},
 	  events: function(start, end, timezone, callback) {
-	  	var month = moment().month(start.month() + 1).format("M");
+	  	var month = moment().month(start.add(10, 'days').month()).format("M");
 	  	var year  = start.year();
 	  	if (month == "1") { year += 1 }
 
