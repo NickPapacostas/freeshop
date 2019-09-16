@@ -206,6 +206,15 @@ table#memberships-datatable tr {
 	text-align: center;
 }
 
+.membership-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-membership {
+  width: 20%
+}
+
 .member-age {
 	color: #4d9bf8;
 	margin-bottom: 15px;

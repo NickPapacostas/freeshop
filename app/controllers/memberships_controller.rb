@@ -43,7 +43,14 @@ class MembershipsController < ApplicationController
 			@membership.reload
 			render 'show'
 		end
+	end
 
+	def destroy
+		@membership = Membership.find(params[:id])
+		if @membership.destroy!
+			flash.now[:success] = "membership deleted"
+			redirect_to volunteer_dashboard_path(current_volunteer)
+		end
 	end
 
 	private

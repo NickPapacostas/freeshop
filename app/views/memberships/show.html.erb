@@ -1,5 +1,11 @@
 <% if @membership.persisted? %>
-	<div class="h4 membership-title">Membership #<%= @membership.number %></div>
+  <div class="membership-header">
+  	<div class="h4 membership-title">Membership #<%= @membership.number %></div>
+    <div class="membership-actions">
+      <%= link_to "Delete membership", membership_path(@membership), method: :delete, data: { confirm: 'Are you sure you want to delete this membership?' }, class: 'delete-membership btn btn-error' %>
+    </div>
+
+  </div>
 <% end %>
 
 <ul class="tab tab-block">
