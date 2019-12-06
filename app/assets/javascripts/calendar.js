@@ -21,7 +21,7 @@ $(document).ready(function() {
 	  events: function(start, end, timezone, callback) {
 	  	var month = moment().month(start.add(10, 'days').month()).format("M");
 	  	var year  = start.year();
-	  	if (month == "1") { year += 1 }
+	  	// if (month == "1") { year += 1 }
 
 	    $.ajax({
 	      url: '/appointments/by_month?month=' + month + '&year=' + year,
