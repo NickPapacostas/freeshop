@@ -4,8 +4,7 @@ class MembershipDatatable < ApplicationDatatable
     @view_columns ||= {
       number:         { source: "Membership.number" },
       first_name: { source: "Member.first_name", cond: :like, searchable: true, orderable: true },
-      last_name:  { source: "Member.last_name",  cond: :like },
-      email:      { source: "Member.email" }
+      last_name:  { source: "Member.last_name",  cond: :like }
     }
   end
 
@@ -36,8 +35,7 @@ class MembershipDatatable < ApplicationDatatable
         # example:
         number: number,
         first_name: first_name,
-        last_name: last_name,
-        email: record.try(:point_of_contact).try(:email)
+        last_name: last_name
       }
     end
   end

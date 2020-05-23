@@ -12,7 +12,6 @@ ready = ->
       {data: 'number'}
       {data: 'first_name'}
       {data: 'last_name'}
-      {data: 'email'}
     ]
 
 $(document).ready(ready)

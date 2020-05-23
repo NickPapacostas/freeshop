@@ -15,8 +15,6 @@ $ ->
       {data: 'first_name'}
       {data: 'last_name'}
       {data: 'birth_year'}
-      {data: 'phone'}
-      {data: 'email'}
     ]
 
   if $('#members-datatable').hasClass('paging')
