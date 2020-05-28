@@ -12,7 +12,7 @@ class Timeslot
 	end
 
 	def people_count
-		appointments.map(&:people_count).sum
+		appointments.map(&:people_count).compact.sum
 	end
 
 	def full?
