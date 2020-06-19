@@ -4,11 +4,14 @@ class Timeslot
 	def initialize(datetime, appointments = [])
 		@datetime = datetime
 		@max_people = 10
-		@appointments = appointments.select { |a| a.datetime == datetime } unless appointments.empty?
+		unless appointments.empty?
+			@appointments = appointments
+				.select { |a| a.datetime == datetime && Membership.exists?(a.membership_id) }
+		end
 	end
 
 	def appointments
-		@appointments ||= Appointment.where(datetime: datetime)
+		@appointments ||= Appointment.where(datetime: datetime).select {|a| Membership.exists?(a.membership_id) }
 	end
 
 	def people_count

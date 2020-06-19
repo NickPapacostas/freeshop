@@ -48,10 +48,10 @@ class Appointment < ApplicationRecord
 
 	def self.timeslots_for_day(date = Date.today, appointments = nil, appointment_length = @@appointment_length)
 		appointments ||= where(datetime: date.beginning_of_day..date.end_of_day)
+		appointments = appointments.reject {|a| !Membership.exists?(a.membership_id)}
 		timeslots = []
 		start_time = date.to_time + (11.hours + 30.minutes)
 		end_time = date.to_time + 16.hours
-
 		timeslots << Timeslot.new(start_time)
 		next_timeslot =  start_time + appointment_length
 		while next_timeslot < end_time
