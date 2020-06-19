@@ -6,12 +6,13 @@ class Timeslot
 		@max_people = 10
 		unless appointments.empty?
 			@appointments = appointments
-				.select { |a| a.datetime == datetime && Membership.exists?(a.membership_id) }
+				.select { |a| a.datetime == datetime}
 		end
 	end
 
 	def appointments
-		@appointments ||= Appointment.where(datetime: datetime).select {|a| Membership.exists?(a.membership_id) }
+		# ensure membership exists
+		@appointments ||= Appointment.joins(:membership).where(datetime: datetime)
 	end
 
 	def people_count
