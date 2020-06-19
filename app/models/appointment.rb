@@ -27,7 +27,7 @@ class Appointment < ApplicationRecord
 
 	def self.for_month(month = Date.today.month, year = Time.current.year)
 		first_day = Date.new(year, month)
-		appointments = Appointment.where(datetime: first_day.beginning_of_month..(first_day.end_of_month + 1.days))
+		appointments = Appointment.joins(:membership).where(datetime: first_day.beginning_of_month..(first_day.end_of_month + 1.days))
 		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
 			day = first_day + day_in_month.days
@@ -47,7 +47,7 @@ class Appointment < ApplicationRecord
 	end
 
 	def self.timeslots_for_day(date = Date.today, appointments = nil, appointment_length = @@appointment_length)
-		appointments ||= where(datetime: date.beginning_of_day..date.end_of_day)
+		appointments ||= joins(:membership).where(datetime: date.beginning_of_day..date.end_of_day)
 		timeslots = []
 		start_time = date.to_time + (11.hours + 30.minutes)
 		end_time = date.to_time + 16.hours
