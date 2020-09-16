@@ -1,0 +1,61 @@
+<h2>Items and Sizes</h2>
+<div class="container">
+  <div class="columns">
+    <div class="column col-9">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Item name</th>
+            <th>Sizes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% ItemType.all.each do |item_type| %>
+            <tr>
+              <td><%= item_type.name %></td>
+              <td>
+                <%= item_type.sizes.map(&:name).join(",") %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="column col-3">
+      <a href="#" class="btn btn-secondary" id="open-item-modal">+</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-lg" id="new_item_modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <a href="#close" class="new_item_close btn btn-clear float-right" aria-label="Close"></a>
+      <div class="modal-title h5">Create a new checkout item</div>
+    </div>
+    <div class="modal-body">
+      <div class="content">
+        <div>
+          <%= form_with(url: '/admin/items', method: 'post', local: true) do |f| %>
+            <%= f.label "Item name", class: 'form-label' %>
+            <%= f.text_field :item_type_name, class: 'form-input' %>
+            <%= f.label "Sizes", class: 'form-label' %>
+            <div class="container">
+              <div class="columns">
+                <%= f.collection_check_boxes(:sizes, Size.all.map(&:name), :to_s, :to_s) do |b| %>
+                  <div class="column col-2">
+                    <%= b.label class: "form-label" do %>
+                      <%= b.check_box + " " +  b.text %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <button type="submit" class="new-item-submit-btn" data-confirm="Create new item?">Create Item</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

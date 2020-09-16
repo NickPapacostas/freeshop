@@ -4,9 +4,16 @@ $ ->
     allow_single_deselect: true
     no_results_text: 'No results matched'
 
+
 $ ->
   $('#membership_modal .membership_close').on('click', ->
     $('#membership_modal').removeClass('active'))
+
+  $('#open-item-modal').on('click', ->
+    $('#new_item_modal').addClass('active'))
+
+  $('#new_item_modal .new_item_close').on('click', ->
+    $('#new_item_modal').removeClass('active'))
 
   $('#timeslot_modal .appointment_close').on('click', ->
     $('#timeslot_modal').removeClass('active'))

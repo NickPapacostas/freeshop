@@ -253,3 +253,7 @@ table#memberships-datatable tr {
   max-height: 500px;
   overflow-y: scroll;
 }
+
+.modal-container {
+  border: solid 2px black;
+}
