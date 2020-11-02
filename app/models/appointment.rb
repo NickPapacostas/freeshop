@@ -31,7 +31,7 @@ class Appointment < ApplicationRecord
 		timeslots = []
 		Time.days_in_month(month).times do |day_in_month|
 			day = first_day + day_in_month.days
-			if [:tuesday?, :wednesday?, :thursday?, :friday?].map {|check_method| day.send(check_method)}.any?
+			if [:monday?, :tuesday?, :wednesday?, :thursday?, :friday?].map {|check_method| day.send(check_method)}.any?
 				unless restricted_day?(day)
 					timeslots << timeslots_for_day(first_day + day_in_month.days, appointments).map(&:for_month)
 				end
@@ -50,7 +50,7 @@ class Appointment < ApplicationRecord
 		appointments ||= joins(:membership).where(datetime: date.beginning_of_day..date.end_of_day)
 		timeslots = []
 		start_time = date.to_time + (11.hours + 30.minutes)
-		end_time = date.to_time + 16.hours
+		end_time = date.to_time + 17.hours
 		timeslots << Timeslot.new(start_time)
 		next_timeslot =  start_time + appointment_length
 		while next_timeslot < end_time
